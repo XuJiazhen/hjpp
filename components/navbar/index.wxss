@@ -1,0 +1,91 @@
+@import '/assets/styles/iconfont.wxss';
+
+.cus-navbar {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 999;
+}
+
+.cus-navbar .top,
+.cus-navbar .bottom {
+  width: 100%;
+  position: absolute;
+  left: 0;
+}
+
+.cus-navbar .top {
+  display: flex;
+  color: #568690;
+  font-size: 20px;
+}
+
+.content {
+  width: 100%;
+  height: 100%;
+  padding: 0 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.search-box {
+  color: #808080;
+  height: 100%;
+  flex: 1;
+  padding: 0 20rpx;
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  border-radius: 15px;
+  box-sizing: border-box;
+  background-color: #f8f8f8;
+  overflow: hidden;
+}
+
+.search-box .icon {
+  margin-right: 3px;
+}
+
+.cus-navbar .bottom {
+  height: 40px;
+  box-sizing: border-box;
+}
+
+.cus-navbar .tabs {
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 10px;
+}
+
+.cus-navbar .tab {
+  flex: 1;
+  height: 30px;
+  transition: all .3s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.cus-navbar .cur-tab {
+  color: #ffffff;
+  background-color: #568690;
+  border-radius: 3px;
+}
+
+.center {
+  width: 100%;
+  height: 100%;
+  padding: 0 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.center-text {
+  font-size: 16px !important;
+  color: #ffffff;
+}

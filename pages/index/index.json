@@ -1,0 +1,11 @@
+  {
+    "usingComponents": {
+      "navbar": "/components/navbar/index",
+      "project": "/components/project/index"
+    },
+    "navigationStyle": "custom",
+		"backgroundTextStyle": "light",
+		"navigationBarBackgroundColor": "#fff",
+		"navigationBarTitleText": "",
+		"navigationBarTextStyle": "black"
+  }

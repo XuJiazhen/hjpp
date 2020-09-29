@@ -1,0 +1,71 @@
+<wxs module="filter" src="../../utils/filter.wxs"></wxs>
+
+<view class="header"></view>
+
+<view class="user-card">
+	<view class="base-info">
+		<view class="avatar">
+			<open-data type="userAvatarUrl"></open-data>
+		</view>
+
+		<view class="nickname">
+			<open-data type="userNickName"></open-data>
+			<!-- <text class="text">{{ realUserInfo.name }}</text> -->
+		</view>
+
+		<view class="btns">
+			<block wx:if="{{ !isRegistered }}">
+				<button class="rigister" size="mini" open-type="getUserInfo" bind:getuserinfo="onGetUserInfo">完善资料</button>
+			</block>
+			<block wx:else>
+				<button class="share" size="mini" open-type="share">邀请好友</button>
+			</block>
+		</view>
+
+		<block wx:if="{{ !isRegistered }}">
+			<view class="welcome">
+				<text class="text">新人，你好！</text>
+			</view>
+		</block>
+		<block wx:else>
+			<view class="realname">
+				<text class="text">{{ realUserInfo.name }}</text>
+			</view>
+
+			<view class="phonenumber">
+				<text class="text">{{ realUserInfo.cellphone }}</text>
+			</view>
+		</block>
+	</view>
+</view>
+<view class="balance">
+	<view class="money">
+		<text>￥ 9999</text>
+	</view>
+	<view class="btn-withdraw">
+		<text>提现</text>
+	</view>
+</view>
+<view class="swiper">
+	<swiper indicator-dots="true" autoplay="true" interval="5000" duration="500" circular="true"
+		indicator-color="rgba(255, 255, 255, .5)" indicator-active-color="rgba(255, 255, 255, .9)" style="height: 200rpx;">
+		<block wx:for="{{ carousels }}" wx:key="pic">
+			<swiper-item>
+				<view class="swiper-item {{ item }}">
+					<image class="pic" src="{{ item.pic }}"></image>
+				</view>
+			</swiper-item>
+		</block>
+	</swiper>
+</view>
+<view class="options" style="grid-template-rows: repeat(3, {{ optionHeight }}px);">
+	<view id="option" class="option-item" wx:for="{{ options }}" wx:key="index" data-index="{{ index }}"
+		hover-class="option-active" bind:tap="onOptionTap">
+		<view class="icon-wrap">
+			<text class="icon iconfont {{ item.icon }}"></text>
+		</view>
+		<text class="text">{{ item.text }}</text>
+	</view>
+</view>
+
+<view class="footer"></view>

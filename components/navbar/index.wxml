@@ -1,0 +1,25 @@
+<view class="cus-navbar" style="height: {{ navBarInfo.navBarHeight }}px; background-color: {{ bgColor }};">
+	<view class="top" style="top: {{ navBarInfo.menuButtonRect.top }}px; height: {{ navBarInfo.menuButtonRect.height  }}px; background-color: {{ bgColor }};">
+		<view class="content">
+			<block wx:if="{{ !noTitle }}">
+				<text class="text" wx:if="{{ !noTitle }}">慧建房拼拼</text>
+				<view class="search-box" style="margin-left: 10px; margin-right: {{ navBarInfo.menuButtonRect.width + 10 }}px;" bind:tap="onSearchBoxTap">
+					<text class="icon iconfont icon-bx-search"></text>
+					<view class="search-area">请输入搜索内容</view>
+				</view>
+			</block>
+			<block wx:if="{{ center }}">
+				<view class="center">
+					<text class="center-text">{{ centerText }}</text>
+				</view>
+			</block>
+		</view>
+	</view>
+	<view wx:if="{{ index }}" class="bottom" style="top: {{ navBarInfo.navBarHeight }}px; background-color: {{ bgColor }};">
+		<view class="tabs">
+			<view class="tab {{ curTab === tab.id ? 'cur-tab' : '' }}" wx:for="{{ tabs }}" wx:for-item="tab" wx:key="id" data-index="{{ tab.id }}" bind:tap="switchTab">
+				<text>{{ tab.type_name }}</text>
+			</view>
+		</view>
+	</view>
+</view>

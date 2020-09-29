@@ -1,0 +1,107 @@
+<wxs module="filter" src="../../utils/filter.wxs"></wxs>
+
+<view class="container">
+	<view class="main-title">
+		<text>正在拼团项目</text>
+	</view>
+
+	<project-item isUser wx:if="{{ list.length !== 0 }}" list="{{ list }}" />
+
+	<view class="detail">
+		<view class="row">
+			<text class="row-label">开发商：</text>
+			<text class="row-content">{{ project.developer }}</text>
+		</view>
+
+		<view class="row">
+			<text class="row-label">物业公司：</text>
+			<text class="row-content">{{ project.property_manage }}</text>
+		</view>
+
+		<view class="row">
+			<text class="row-label">物业费：</text>
+			<text class="row-content">{{ project.property_manage_fee }} /平/月</text>
+		</view>
+
+		<view class="row">
+			<text class="row-label">关键字：</text>
+			<text class="row-content">{{ project.keywords }}</text>
+		</view>
+
+		<view class="row">
+			<text class="row-label">产权期：</text>
+			<text class="row-content">{{ project.term }} 年</text>
+		</view>
+	</view>
+
+	<view class="user-group">
+		<view class="captain-brief">
+			<view class="brief-title">
+				<text>团长简介</text>
+			</view>
+			<view class="brief-content">
+				<text>可以在这里写点什么以作简介，占位。</text>
+			</view>
+		</view>
+
+		<view class="member-info">
+			<view class="member-title">
+				<text>团员 {{ members.length }} 人</text>
+			</view>
+			<view class="member-content">
+				<view class="avatar" wx:for="{{ members }}" wx:key="index">
+					<image class="pic" src="{{ item.avatar }}"></image>
+				</view>
+			</view>
+		</view>
+	</view>
+
+
+	<view class="section other">
+		<view class="other-top">
+			<view class="top-left">
+				<text class="text">其它开团项目</text>
+			</view>
+			<view class="top-right">
+				<text class="text">查看更多</text>
+				<text class="icon iconfont icon-bx-chevron-right"></text>
+			</view>
+		</view>
+
+		<project-item activity wx:if="{{ other_activities.length !== 0 }}" list="{{ other_activities }}" />
+
+	</view>
+
+</view>
+
+<view class="fixed-bottom">
+	<view class="captain" bind:tap="toUserPage" data-id="{{ captain.id }}">
+		<view class="avatar">
+			<image class="pic" src="{{ captain.avatar }}"></image>
+		</view>
+		<view class="info">
+			<text class="info-name">{{ captain.name }}</text>
+			<text class="info-label">团长</text>
+		</view>
+	</view>
+
+	<view class="btns">
+		<button class="btn btn-call" bind:tap="onMakePhoneCall" data-phonenumber="{{ captain.cellphone }}">
+			<text class="icon iconfont icon-bxs-phone"></text>
+			<text>电话</text>
+		</button>
+
+		<block wx:if="{{ isThisCaptain || isThisMember }}">
+			<button class="btn btn-invite" open-type="share">
+				<text class="icon iconfont icon-bxs-share-alt"></text>
+				<text>分享</text>
+			</button>
+		</block>
+		<block wx:else>
+			<button class="btn btn-invite" open-type="getUserInfo" bind:getuserinfo="onGetUserInfo">
+				<text class="icon iconfont icon-bxs-navigation"></text>
+				<text>加入</text>
+			</button>
+		</block>
+	</view>
+</view>

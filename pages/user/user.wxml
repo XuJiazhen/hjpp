@@ -1,0 +1,12 @@
+<view class="container">
+	<project-item wx:if="{{ list.length !== 0 }}" list="{{ list }}" />
+
+	<view class="tools">
+		<view class="tool-item" wx:for="{{ tools }}" wx:key="index">
+			<view class="icon-wrap">
+				<text class="icon iconfont {{ item.icon }}"></text>
+			</view>
+			<text class="text">{{ item.text }}</text>
+		</view>
+	</view>
+</view>

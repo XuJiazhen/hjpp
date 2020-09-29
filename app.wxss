@@ -1,0 +1,8 @@
+:root {
+  --dusty-blue: #568690;
+  --light-grey-line: #e1e4e8;
+  --wine-red: #935557;
+  --light-grey-bg: #f8f8f8;
+  --light-red: #ff5b5c;
+  --light-yellow: #fd911f;
+}

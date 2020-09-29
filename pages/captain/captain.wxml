@@ -1,0 +1,20 @@
+<view class="member-item" wx:for="{{ members }}" wx:key="index">
+	<view class="info">
+		<view class="info-item avatar">
+			<image class="pic" src="{{ item.avatar}}"></image>
+		</view>
+		<view class="info-item realname">
+			<text class="text">{{ item.name }}</text>
+		</view>
+		<view class="info-item phonenumber">
+			<text class="text">{{ item.cellphone }}</text>
+		</view>
+	</view>
+	<view class="btn-view" bind:tap="toListPage" data-id="{{ item.id }}">
+		<text class="text">查看拼团</text>
+	</view>
+</view>
+
+<view class="total">
+	<text class="text">共 {{ members.length }} 人</text>
+</view>

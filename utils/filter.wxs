@@ -1,0 +1,45 @@
+var filter = {
+	formatPrice: function (price) {
+		if (!price) {
+			return '待定'
+		}
+
+		var str = price.toString().split('.')[0]
+		var arr = str.split('')
+
+		while (arr.length < 5) {
+			arr.push('')
+		}
+
+		return arr.join('')
+	},
+
+	splitKeywords: function (str) {
+		var arr = str.split(',')
+		if (arr.length > 2) {
+			arr.length = 2
+		}
+
+		return arr
+	},
+
+	getIdentity: function (str) {
+		switch (str) {
+			case 'captain':
+				return '团长'
+				break;
+			case 'member':
+				return '团员'
+				break;
+			case 'visitor':
+				return '游客'
+				break;
+		}
+	}
+}
+
+module.exports = {
+	formatPrice: filter.formatPrice,
+	splitKeywords: filter.splitKeywords,
+	getIdentity: filter.getIdentity
+}

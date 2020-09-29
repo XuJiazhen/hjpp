@@ -1,0 +1,68 @@
+<wxs module="filter" src="../../utils/filter.wxs"></wxs>
+
+<block wx:if="{{ !activity }}">
+	<view class="projects">
+		<block wx:for="{{ list }}" wx:for-item="project" wx:key="index">
+			<view class="project" bind:tap="toDetail" data-id="{{ project.id }}">
+				<view class="left">
+					<image class="pic" src="{{ project.pic }}"></image>
+					<view wx:if="{{ project.activities_num }}" class="pin">
+						<text>正在热拼</text>
+					</view>
+				</view>
+				<view class="middle">
+					<text class="name">{{ project.project_name }}</text>
+					<view class="info">
+						<text class="location">{{ project.region }}</text>
+						<text class="area"></text>
+					</view>
+					<view class="keywords">
+						<block wx:if="{{ project.keywords }}">
+							<text wx:for="{{ filter.splitKeywords(project.keywords) }}" wx:key="index" class="keyword">{{ item }}</text>
+						</block>
+					</view>
+				</view>
+				<view class="right">
+					<text class="title">最低单价</text>
+					<view class="price">
+						<text class="price">{{ filter.formatPrice(project.low_price) }}</text>
+						<text wx:if="{{ project.low_price }}">元</text>
+					</view>
+				</view>
+			</view>
+		</block>
+	</view>
+</block>
+<block wx:else>
+	<view class="projects">
+		<block wx:for="{{ list }}" wx:key="index">
+			<view class="project" bind:tap="toDetail" data-id="{{ item.id ? item.id : item.activity_id }}">
+				<view class="left">
+					<image class="pic" src="{{ item.project.pic }}"></image>
+					<view wx:if="{{ item.project.activities_num }}" class="pin">
+						<text>正在热拼</text>
+					</view>
+				</view>
+				<view class="middle">
+					<text class="name">{{ item.project.project_name }}</text>
+					<view class="info">
+						<text class="location">{{ item.project.region }}</text>
+						<text class="area"></text>
+					</view>
+					<view class="keywords">
+						<block wx:if="{{ item.project.keywords }}">
+							<text wx:for="{{ filter.splitKeywords(item.project.keywords) }}" wx:for-item="keyword" wx:key="index" class="keyword">{{ keyword }}</text>
+						</block>
+					</view>
+				</view>
+				<view class="right">
+					<text class="title">最低单价</text>
+					<view class="price">
+						<text class="price">{{ filter.formatPrice(item.project.low_price) }}</text>
+						<text wx:if="{{ item.project.low_price }}">元</text>
+					</view>
+				</view>
+			</view>
+		</block>
+	</view>
+</block>

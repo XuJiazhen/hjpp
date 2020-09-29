@@ -1,0 +1,11 @@
+{
+  "usingComponents": {
+    "navbar": "/components/navbar/index"
+  },
+  "navigationStyle": "default",
+  "backgroundTextStyle": "light",
+  "navigationBarBackgroundColor": "#568690",
+  "navigationBarTitleText": "个人中心",
+  "navigationBarTextStyle": "white",
+  "enablePullDownRefresh": false
+}

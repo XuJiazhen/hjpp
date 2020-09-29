@@ -1,0 +1,23 @@
+.created {
+	border-bottom: 10px solid #f8f8f8;
+}
+
+.activity-header {
+	margin: 0 20rpx;
+	padding: 5px 0;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	border-bottom: 1px solid #f8f8f8;
+}
+
+.activity-header .title {
+	font-size: 20px;
+	color: #568690;
+	font-weight: bold;
+}
+
+.activity-header .more {
+	font-size: 14px;
+	color: #808080;
+}

@@ -1,0 +1,41 @@
+@import '/assets/styles/iconfont.wxss';
+
+.container {
+	padding: 0 10px;
+}
+
+.header {
+	display: flex;
+	align-items: center;
+	height: 40px;
+}
+
+.search-box {
+	color: #808080;
+  height: 100%;
+  flex: 1;
+  padding: 0 20rpx;
+  display: flex;
+  align-items: center;
+  font-size: 16px;
+  border-radius: 20px;
+  box-sizing: border-box;
+  background-color:#f8f8f8;
+  overflow: hidden;
+}
+
+.search-box input {
+	width: 100%;
+}
+
+.icon-bx-search {
+	font-size: 16px !important;
+	margin-right: 3px;
+}
+
+.search {
+	margin-left: 20rpx;
+	color: #ffffff;
+	background-color: #568690;
+	font-weight: normal;
+}

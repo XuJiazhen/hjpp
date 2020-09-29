@@ -1,0 +1,23 @@
+<wxs module="filter" src="../../utils/filter.wxs"></wxs>
+
+<view class="container" style="margin-top: {{ navBarHeight }}px;">
+	<view class="section swiper">
+		<swiper indicator-dots="true" autoplay="true" interval="5000" duration="500" circular="true" indicator-color="rgba(255, 255, 255, .5)" indicator-active-color="rgba(255, 255, 255, .9)" style="min-height: 300rpx;">
+			<block wx:for="{{ carousels }}" wx:key="pic">
+				<swiper-item>
+					<view class="swiper-item {{ item }}">
+						<image class="pic" src="{{ item.pic }}"></image>
+					</view>
+				</swiper-item>
+			</block>
+		</swiper>
+	</view>
+
+	<block wx:if="{{list.length !== 0}}">
+		<project-item list="{{ list }}" />
+	</block>
+
+	<view class="is-bottom" wx:if="{{ isBottom }}">
+		<text>到底了！</text>
+	</view>
+</view>
