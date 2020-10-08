@@ -1,1 +1,5 @@
-<text>成员列表</text>
+<view class="total">
+	<text class="text">共 {{ activities.length }} 个拼团</text>
+</view>
+<project-item activity list="{{ activities }}" />
+

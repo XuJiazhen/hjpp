@@ -1,0 +1,52 @@
+<wxs module="filter" src="../../utils/filter.wxs"></wxs>
+
+<scroll-view scroll-y style="height: {{ wh }}px;">
+	<view class="section selections">
+		<view class="selection {{ filter.multiSelect(index, selected) ? 'active' : '' }}" wx:for="{{ selections }}" wx:key="index" bind:tap="onSelectionTap" data-index="{{ index }}">
+			<text>{{ item }}</text>
+		</view>
+	</view>
+
+	<view class="section">
+		<view class="title">
+			<text class="bold">请提供相关问题图片</text>
+			<text class="grey">（最多6张，单张图不超过20M）</text>
+		</view>
+		<view class="pictures">
+			<view class="picture" wx:for="{{ images }}" wx:key="index">
+				<image class="pic" src="{{ item }}" mode="aspectFit"></image>
+				<view class="remove" bind:tap="onRemove" data-index="{{ index }}">
+					<text class="icon iconfont icon-remove"></text>
+				</view>
+			</view>
+			<view wx:if="{{ images.length !== 6 }}" class="picture" bind:tap="onChooseImage">
+				<image class="pic" src="/assets/icons/add.png"></image>
+			</view>
+		</view>
+	</view>
+
+	<view class="section">
+		<view class="title">
+			<text class="bold">问题描述</text>
+		</view>
+		<view class="content">
+			<textarea placeholder="请描述您的问题（300字内）" placeholder-class="grey" maxlength="300" value="{{ description }}" bind:input="onDescInput"></textarea>
+		</view>
+	</view>
+
+	<view class="section" style="margin-bottom: 0;">
+		<view class="title">
+			<text class="bold">联系方式</text>
+			<text class="grey">（手机号/邮箱）</text>
+		</view>
+		<view class="content">
+			<input placeholder="请留下您的联系方式，便于排查技术问题" placeholder-class="grey" maxlength="30" value="{{ contacts }}" bind:input="onContactsInput"></input>
+		</view>
+	</view>
+
+	<view class="btn-submit" bind:tap="onSubmit">
+		<text>提交</text>
+	</view>
+
+	<view class="bottom"></view>
+</scroll-view>

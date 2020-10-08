@@ -66,7 +66,6 @@ Page({
 
 		const query = wx.createSelectorQuery()
 		query.select('#option').boundingClientRect((rect) => {
-			console.log(rect);
 			this.setData({
 				optionHeight: rect.width
 			})
@@ -132,7 +131,18 @@ Page({
 		if (other.indexOf(index) !== -1) {
 			console.log('OTHER: ', index);
 
-			// this.toCaptainPage(index)
+			switch (index) {
+				case 6:
+					this.toCompanyPage(index)
+					break;
+				case 7:
+					this.toFeedbackPage(index)
+					break;
+				case 8:
+					this.toInstructionPage(index)
+				default:
+					break;
+			}
 		}
 	},
 
@@ -145,6 +155,24 @@ Page({
 	toMemberPage(index) {
 		wx.navigateTo({
 			url: `/pages/member/member?index=${index}`,
+		})
+	},
+
+	toCompanyPage(index) {
+		wx.navigateTo({
+			url: `/pages/company/company?index=${index}`,
+		})
+	},
+
+	toFeedbackPage(index) {
+		wx.navigateTo({
+			url: `/pages/feedback/feedback?index=${index}`,
+		})
+	},
+
+	toInstructionPage(index) {
+		wx.navigateTo({
+			url: `/pages/instruction/instruction?index=${index}`,
 		})
 	}
 })

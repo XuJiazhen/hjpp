@@ -1,0 +1,9 @@
+{
+  "usingComponents": {},
+  "navigationStyle": "default",
+  "backgroundTextStyle": "light",
+  "navigationBarBackgroundColor": "#568690",
+  "navigationBarTitleText": "公司介绍",
+  "navigationBarTextStyle": "white",
+  "enablePullDownRefresh": false
+}

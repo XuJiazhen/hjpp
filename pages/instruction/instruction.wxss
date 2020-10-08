@@ -1,0 +1,160 @@
+@import '/assets/styles/iconfont.wxss';
+
+page {
+  background-color: #f8f8f8;
+}
+
+.pic {
+  width: 100%;
+  height: 100%;
+}
+
+.header {
+  margin-bottom: 10px;
+  background-color: #ffffff;
+  padding-bottom: 20px;
+}
+
+.banner {
+  height: 200px;
+  background-color: #568690;
+}
+
+.card {
+  margin: 0 20rpx;
+  margin-top: -30%;
+  background-color: #ffffff;
+  border-radius: 6px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0px 15px 10px -15px rgba(0, 0, 0, .3);
+}
+
+.title {
+  font-weight: bold;
+  margin: 10px 0;
+}
+
+.title .hr {
+  color: #e1e4e8;
+}
+
+.title .text {
+  margin: 0 20rpx;
+  font-size: 18px;
+}
+
+.card .content {
+  font-size: 14px;
+  color: #808080;
+}
+
+.brief {
+  margin: 0 20rpx;
+  margin-top: 40px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  column-gap: 10px;
+}
+
+.brief-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #f8f8f8;
+  border-radius: 6px;
+  margin-bottom: 10px;
+}
+
+.brief-item .text {
+  color: #808080;
+}
+
+.brief-item .icon-wrap {
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50%;
+  background-color: #568690;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform: translateY(-50%);
+  color: #ffffff;
+}
+
+.advertising {
+  height: 50px;
+  margin: 0 20rpx;
+  border-radius: 6px;
+  background-color: #f8f8f8;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: #ffffff;
+  padding-bottom: 20px;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.dot {
+  color: #568690 !important;
+  font-weight: bold;
+}
+
+.main .title {
+  align-self: center;
+}
+
+.feature-item {
+  border-radius: 6px;
+  background-color: #ffffff;
+  box-shadow: 0px 15px 10px -15px rgba(0, 0, 0, .3);
+  display: flex;
+  margin: 0 20rpx;
+  height: 120px;
+  overflow: hidden;
+  margin-bottom: 15px;
+  box-sizing: border-box;
+}
+
+.feature-item .left {
+  display: flex;
+  flex-direction: column;
+  width: 85%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 40rpx 0 40rpx 40rpx;
+  box-sizing: border-box;
+}
+
+.feature-item .left text:not(.bold) {
+  color: #808080;
+  font-size: 14px;
+}
+
+.feature-item .right {
+  width: 15%;
+  height: 100%;
+  background-color: #568690;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.feature-item .right .text {
+  writing-mode: vertical-lr;
+  color: #ffffff;
+}
+

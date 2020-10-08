@@ -1,1 +1,8 @@
-/* pages/member/member.wxss */
+.total {
+	width: 100%;
+	height: 40px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	color: #808080;
+}

@@ -1,0 +1,71 @@
+<scroll-view scroll-y style="height: {{ wh }}px;">
+	<view class="header">
+		<view class="banner" style="background-image: url('/assets/images/banner.png'); background-size: contain;"></view>
+		<view class="card">
+			<view class="logo">
+				<text>慧建房拼拼</text>
+			</view>
+			<view class="title">
+				<text class="hr">—</text>
+				<text class="text">这个小程序有什么用</text>
+				<text class="hr">—</text>
+			</view>
+			<view class="content">
+				<text class="text">占位占位占位占位占位占位占位占位占位占位占位占位占位占位占位占位占位占位占位占位占位占位占位占位占位占位占位。</text>
+			</view>
+		</view>
+
+		<view class="brief">
+			<view class="brief-item">
+				<view class="icon-wrap">
+					<text class="icon">X</text>
+				</view>
+				<text class="title">XXX</text>
+				<text class="text">XXX</text>
+				<text class="text">XXX</text>
+			</view>
+
+			<view class="brief-item">
+				<view class="icon-wrap">
+					<text class="icon">X</text>
+				</view>
+				<text class="title">XXX</text>
+				<text class="text">XXX</text>
+				<text class="text">XXX</text>
+			</view>
+
+			<view class="brief-item">
+				<view class="icon-wrap">
+					<text class="icon">X</text>
+				</view>
+				<text class="title">XXX</text>
+				<text class="text">XXX</text>
+				<text class="text">XXX</text>
+			</view>
+		</view>
+
+		<view class="advertising">
+			<text>广告占位</text>
+		</view>
+	</view>
+
+	<view class="main">
+		<view class="title">
+				<text class="hr">—</text>
+				<text class="text">常用功能简介</text>
+				<text class="hr">—</text>
+		</view>
+
+		<view class="feature-item" wx:for="{{ features }}" wx:key="index">
+			<view class="left">
+				<text class="bold">{{ item }}</text>
+				<text><text class="dot">· </text>如何查找意向项目</text>
+				<text><text class="dot">· </text>对项目不了解，怎么查找项目？</text>
+				<text><text class="dot">· </text>想看近期在拼项目，怎么查找？</text>
+			</view>
+			<view class="right" style="background-image: url('/assets/images/piece.png'); background-size: 100% 100%;">
+				<text class="text">图文教程</text>
+			</view>
+		</view>
+	</view>
+</scroll-view>

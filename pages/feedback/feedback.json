@@ -1,13 +1,12 @@
 {
-  "usingComponents": {
-    "navbar": "/components/navbar/index"
-  },
+  "usingComponents": {},
   "navigationStyle": "default",
   "backgroundTextStyle": "light",
   "navigationBarBackgroundColor": "#568690",
-  "navigationBarTitleText": "个人中心",
+  "navigationBarTitleText": "意见反馈",
   "navigationBarTextStyle": "white",
   "enablePullDownRefresh": false,
   "backgroundColorTop": "#ffffff",
-  "backgroundColorBottom": "#ffffff"
+  "backgroundColorBottom": "#ffffff",
+  "disableScroll": true
 }

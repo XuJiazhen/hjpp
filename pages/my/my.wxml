@@ -10,7 +10,6 @@
 
 		<view class="nickname">
 			<open-data type="userNickName"></open-data>
-			<!-- <text class="text">{{ realUserInfo.name }}</text> -->
 		</view>
 
 		<view class="btns">
@@ -58,6 +57,16 @@
 		</block>
 	</swiper>
 </view>
+<!-- <view class="options" style="grid-template-rows: repeat(3, {{ optionHeight }}px);">
+	<view id="option" class="option-item" wx:for="{{ options }}" wx:key="index" data-index="{{ index }}"
+		hover-class="option-active" bind:tap="onOptionTap">
+		<view class="icon-wrap">
+			<text class="icon iconfont {{ item.icon }}"></text>
+		</view>
+		<text class="text">{{ item.text }}</text>
+	</view>
+</view> -->
+
 <view class="options" style="grid-template-rows: repeat(3, {{ optionHeight }}px);">
 	<view id="option" class="option-item" wx:for="{{ options }}" wx:key="index" data-index="{{ index }}"
 		hover-class="option-active" bind:tap="onOptionTap">

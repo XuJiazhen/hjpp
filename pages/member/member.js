@@ -1,66 +1,65 @@
-// pages/member/member.js
+const app = getApp();
+
 Page({
 
-	/**
-	 * 页面的初始数据
-	 */
 	data: {
-
+		activities: []
 	},
 
-	/**
-	 * 生命周期函数--监听页面加载
-	 */
 	onLoad: function (options) {
+		const index = options.index
 
+		switch (index) {
+			case '3':
+				this.getJoinedTeams(index)
+				break;
+			case '4':
+				this.getVisitedTeams(index)
+				break;
+			case '5':
+				this.getSettledTeams(index)
+				break;
+			default:
+				break;
+		}
 	},
 
-	/**
-	 * 生命周期函数--监听页面初次渲染完成
-	 */
-	onReady: function () {
+	getJoinedTeams(index) {
+		const _this = this
 
+		wx.request({
+			url: `${app.globalData.baseUrl}/mine/joinedActivities`,
+			method: 'GET',
+			header: {
+				'x-user-token': wx.getStorageSync('skey'),
+				'x-user-id': wx.getStorageSync('openid')
+			},
+			success(res) {
+				console.log('GET ALL JOINED TEAMS: ', res);
+
+				_this.setData({
+					activities: _this.data.activities.concat(res.data.data)
+				})
+			},
+			fail(err) {
+				console.log(err);
+			}
+		})
 	},
 
-	/**
-	 * 生命周期函数--监听页面显示
-	 */
-	onShow: function () {
-
+	getVisitedTeams(index) {
+		console.log(index);
 	},
 
-	/**
-	 * 生命周期函数--监听页面隐藏
-	 */
-	onHide: function () {
-
+	getSettledTeams(index) {
+		console.log(index);
 	},
 
-	/**
-	 * 生命周期函数--监听页面卸载
-	 */
-	onUnload: function () {
+	toListPage(e) {
+		const id = e.currentTarget.dataset.id
 
-	},
-
-	/**
-	 * 页面相关事件处理函数--监听用户下拉动作
-	 */
-	onPullDownRefresh: function () {
-
-	},
-
-	/**
-	 * 页面上拉触底事件的处理函数
-	 */
-	onReachBottom: function () {
-
-	},
-
-	/**
-	 * 用户点击右上角分享
-	 */
-	onShareAppMessage: function () {
-
+		wx.navigateTo({
+			url: `/pages/captain/list/list?id=${id}`,
+		})
 	}
 })

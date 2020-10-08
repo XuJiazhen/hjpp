@@ -1,3 +1,6 @@
+<view class="total">
+	<text class="text">共 {{ members.length }} 人</text>
+</view>
 <view class="member-item" wx:for="{{ members }}" wx:key="index">
 	<view class="info">
 		<view class="info-item avatar">
@@ -15,6 +18,3 @@
 	</view>
 </view>
 
-<view class="total">
-	<text class="text">共 {{ members.length }} 人</text>
-</view>
