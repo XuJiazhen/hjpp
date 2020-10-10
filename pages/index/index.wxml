@@ -1,6 +1,5 @@
 <navbar bind:tabTap="onTabTap" index tabs="{{ tabs }}" />
 
-
 <scroll-view scroll-y scroll-top="{{ top }}" bind:scrolltolower="onScrollToLower" lower-threshold="100" style="height: 100vh;">
 	<project id="project" curTab="{{ curTab }}" newPage="{{ newPage }}" navBarHeight="{{ navBarInfo.navBarHeight + 40 }}" indexProjects="{{ indexProjects }}" indexCarousels="{{ indexCarousels }}" bind:pageChange="onPageChange" isBottom="{{ isBottom }}"/>
 </scroll-view>

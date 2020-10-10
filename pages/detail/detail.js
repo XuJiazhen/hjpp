@@ -64,10 +64,7 @@ Page({
 					}
 				]
 
-				let album = []
-				if (info.album && info.album.length !== 0) {
-					album.concat(info.album)
-				}
+				const album = info.album
 
 				album.forEach((item) => {
 					const l = item.values.length
@@ -77,11 +74,12 @@ Page({
 						item.values.pop()
 					}
 				})
+				
 
 				_this.setData({
 					id: options.id,
 					project: info,
-					detail: detail,
+					detail,
 					album,
 					isThisCaptain: info.activity_caption,
 					isThisMember: info.activity_member

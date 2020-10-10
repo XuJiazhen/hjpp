@@ -1,9 +1,9 @@
-<view class="container">
 	<view class="header">
 		<view class="search-box" bind:tap="onSearchBoxTap">
 			<text class="icon iconfont icon-bx-search"></text>
-			<input type="text" placeholder="请输入搜索内容" placeholder-style="font-size: 14px;" value="{{ searchText }}" bind:input="onSearch"></input>
+			<input type="text" focus placeholder="请输入搜索内容" placeholder-style="font-size: 14px;" value="{{ searchText }}" bind:input="onSearchInput"></input>
 		</view>
-		<button class="search" size="mini">搜索</button>
+		<button class="search" size="mini" bind:tap="onSearch">搜索</button>
 	</view>
-</view>
+	
+	<project-item list="{{ searched }}" />

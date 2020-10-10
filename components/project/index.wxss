@@ -1,3 +1,5 @@
+@import '/assets/styles/iconfont.wxss';
+
 .container {
 	height: 100%;
 	background-color: #ffffff;
@@ -19,9 +21,70 @@
 	border-radius: 3px;
 }
 
- .pic {
+.pic {
 	width: 100%;
 	height: 100%;
+}
+
+.article {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	font-size: 14px;
+	margin-top: 10px;
+}
+
+.article-header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 5px 0;
+	margin: 0 20rpx;
+}
+
+.header-left .text {
+	color: #568690;
+}
+
+.header-right {
+	color: #808080;
+}
+
+.article-content {
+	margin: 0 20rpx;
+}
+
+.new-article {
+	box-shadow: 0 4rpx 20rpx 0 rgba(212, 217, 223, .5);
+	border-radius: 3px;
+	box-sizing: border-box;
+	overflow: hidden;
+	padding: 10px 20px;
+	box-sizing: border-box;
+}
+
+.new-left {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	width: 60%;
+}
+
+.left-brief {
+	color: #808080;
+	margin: 5px 0;
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 2;
+	overflow: hidden;
+}
+
+.new-left .keyword {
+	font-size: 12px;
+	border: 1px solid #568690;
+	border-radius: 3px;
+	padding: 2px 4px;
+	color: #568690;
 }
 
 .projects {
