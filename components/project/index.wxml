@@ -13,30 +13,32 @@
 		</swiper>
 	</view>
 
-	<!-- <view class="article">
+	<view class="article">
 		<view class="article-header">
 			<view class="header-left">
 				<text class="text">最新文章</text>
 			</view>
-			<view class="header-right">
+			<view class="header-right" bind:tap="toArticleListPage">
 				<text class="text">查看更多</text>
 				<text class="icon iconfont icon-bx-chevron-right"></text>
 			</view>
 		</view>
-		<view class="article-content">
+		<view class="article-content" bind:tap="toArticleContentPage" data-url="{{ article.url }}" data-title="{{ article.title }}" data-pic="{{ article.pic }}">
 			<view class="new-article">
 				<view class="new-left">
-					<text class="left-title">文章标题</text>
-					<text class="left-brief">文章简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介</text>
-					<view class="left-keywords">
+					<text class="left-title">{{ article.title }}</text>
+					<text class="left-brief">{{ article.describe }}</text>
+					<!-- <view class="left-keywords">
 						<text class="keyword">关键字</text>
 						<text class="keyword">关键字</text>
-					</view>
+					</view> -->
 				</view>
-				<view class="new-right"></view>
+				<view class="new-right">
+					<image class="pic" mode="aspectFill" src="{{ article.pic }}"></image>
+				</view>
 			</view>
 		</view>
-	</view> -->
+	</view>
 
 	<block wx:if="{{list.length !== 0}}">
 		<project-item list="{{ list }}" />

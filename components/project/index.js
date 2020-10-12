@@ -55,6 +55,7 @@ Component({
 		list: [],
 		curPage: 1,
 		lastPage: 1,
+		article: {}
 	},
 
 	methods: {
@@ -80,12 +81,36 @@ Component({
 						projects: res.data.info.list,
 						list: res.data.info.list.data,
 						curPage: res.data.info.list.current_page,
-						lastPage: res.data.info.list.last_page
+						lastPage: res.data.info.list.last_page,
+						article: res.data.info.article
 					})
 
 					_this.onPageChange(res.data.info.list.current_page, res.data.info.list.last_page)
 
 				}
+			})
+		},
+		toArticleContentPage(e) {
+			const {
+				url,
+				title,
+				pic
+			} = e.currentTarget.dataset
+
+			wx.navigateTo({
+				url: '/pages/article/content/content',
+				success(res) {
+					res.eventChannel.emit('acceptDataFromOpenerPage', {
+						url,
+						title,
+						pic
+					})
+				}
+			})
+		},
+		toArticleListPage(e) {
+			wx.navigateTo({
+				url: `/pages/article/list/list`,
 			})
 		}
 	},

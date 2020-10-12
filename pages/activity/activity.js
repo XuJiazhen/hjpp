@@ -2,20 +2,25 @@ const app = getApp()
 
 Page({
 	data: {
-		id: Number,
-		uid: Number,
+		id: '',
+		uid: '',
 		list: Array,
 		project: Object,
 		captain: Object,
 		members: Array,
 		other: Array,
+		deadline: String,
+		countDown: '',
 		isThisCaptain: Boolean,
 		isThisMember: Boolean,
-		wxUserInfo: Object
+		wxUserInfo: Object,
+		showQRCode: false,
+		qrCodeSrc: '',
+		qrCodeFilePath: ''
 	},
 
 	onLoad: function (options) {
-		console.log(options);
+		console.log('OPTIONS: ', options);
 
 		wx.showLoading({
 			title: '正在载入',
@@ -59,8 +64,24 @@ Page({
 	onShareAppMessage(e) {
 		const realUserInfo = wx.getStorageSync('realUserInfo')
 
+		if (this.data.isThisCaptain) {
+			return {
+				title: `发起了【${this.data.project.project_name}】的拼团，买房拼团省首付，赶快来参加吧`,
+				path: `/pages/activity/activity?id=${this.data.id}&uid=${realUserInfo.id}`,
+				imageUrl: this.data.project.pic
+			}
+		}
+
+		if (this.data.isThisMember) {
+			return {
+				title: `参加了【${this.data.project.project_name}】的拼团，拼团买房得优惠，赶快来参加吧`,
+				path: `/pages/activity/activity?id=${this.data.id}&uid=${realUserInfo.id}`,
+				imageUrl: this.data.project.pic
+			}
+		}
+
 		return {
-			title: this.data.project.project_name,
+			title: `【${this.data.project.project_name}】开启拼团买房得优惠活动啦，赶快来参加吧`,
 			path: `/pages/activity/activity?id=${this.data.id}&uid=${realUserInfo.id}`,
 			imageUrl: this.data.project.pic
 		}
@@ -150,7 +171,15 @@ Page({
 
 											if (res.statusCode === 200 && res.data) {
 												wx.hideLoading()
-												const { id, project, captain, members, other_activities } = res.data.data
+												const {
+													id,
+													project,
+													captain,
+													members,
+													other_activities
+												} = res.data.data
+
+												_this.onCountDown(project.activity_info.finish_time)
 
 												const isThisCaptain = Number(id) === Number(nid)
 												let isThisMember = false
@@ -164,6 +193,7 @@ Page({
 													captain,
 													members,
 													other_activities,
+													deadline: project.activity_info.finish_time,
 													isThisCaptain,
 													isThisMember
 												})
@@ -226,7 +256,16 @@ Page({
 				if (res.statusCode === 200 && res.data) {
 					wx.hideLoading()
 					const userId = wx.getStorageSync('realUserInfo').id
-					const { id, project, captain, members, other_activities } = res.data.data
+					const {
+						id,
+						project,
+						captain,
+						members,
+						other_activities
+					} = res.data.data
+
+					_this.onCountDown(project.activity_info.finish_time)
+
 					const isThisCaptain = Number(captain.id) === Number(userId)
 					const isThisMember = members.some((item) => {
 						return Number(item.pivot.member_id) === Number(userId)
@@ -253,9 +292,11 @@ Page({
 						members,
 						other,
 						other_activities,
+						deadline: project.activity_info.finish_time,
 						isThisCaptain,
 						isThisMember
 					})
+
 				} else {
 					console.log('SERVER ERRPR:', res)
 				}
@@ -292,11 +333,19 @@ Page({
 							success(res) {
 								console.log('PINTUAN INFO: ', res);
 
-
 								if (res.statusCode === 200 && res.data) {
 									wx.hideLoading()
 									const userId = wx.getStorageSync('realUserInfo').id
-									const { id, project, captain, members, other_activities } = res.data.data
+									const {
+										id,
+										project,
+										captain,
+										members,
+										other_activities
+									} = res.data.data
+
+									_this.onCountDown(project.activity_info.finish_time)
+
 									const isThisCaptain = Number(userId) === Number(uid)
 									const isThisMember = members.some((item) => {
 										return Number(item.pivot.member_id) === Number(userId)
@@ -323,6 +372,7 @@ Page({
 										members,
 										other,
 										other_activities,
+										deadline: project.activity_info.finish_time,
 										isThisCaptain,
 										isThisMember
 									})
@@ -350,6 +400,131 @@ Page({
 		wx.navigateTo({
 			url: `/pages/user/user?userId=${userId}&list=${list}`,
 		})
-	}
+	},
 
+	onCountDown(deadline) {
+		const date = deadline.replace(/-/g, '/')
+		setInterval(() => {
+			const now = new Date()
+			const end = new Date(date)
+			const seconds = parseInt((end.getTime() - now.getTime()) / 1000)
+			const d = parseInt(seconds / 3600 / 24)
+			const h = parseInt(seconds / 3600 % 24)
+			const m = parseInt(seconds / 60 % 60)
+			const s = parseInt(seconds % 60)
+
+			const countDown = `${ d }:${ h }:${ m }:${ s }`
+			this.setData({
+				countDown
+			})
+		}, 1000);
+	},
+
+	onGenerateQRCode(e) {
+		const _this = this
+		wx.showLoading({
+			title: '正在生成',
+		})
+		const realUserInfo = wx.getStorageSync('realUserInfo')
+
+		wx.request({
+			url: `${app.globalData.baseUrl}/activity/qrcode`,
+			method: 'POST',
+			data: {
+				src: `/pages/activity/activity?id=${this.data.id}&uid=${realUserInfo.id}`
+			},
+			header: {
+				'x-user-token': wx.getStorageSync('skey'),
+				'x-user-id': wx.getStorageSync('openid')
+			},
+			async success(res) {
+				const {
+					img
+				} = res.data
+
+				const qrCodeFilePath = await _this.onDownloadImage(res.data.img)
+				// const qrCodeBgFilePath = '../../assets/images/share_bg.png'
+				// const query = wx.createSelectorQuery()
+				// query.select('#qrCode').fields({
+				// 	node: true,
+				// 	size: true
+				// }).exec((res) => {
+				// 	const canvas = res[0].node
+				// 	const ctx = canvas.getContext('2d')
+				// 	const dpr = wx.getSystemInfoSync().pixelRatio
+				// 	canvas.width = res[0].width * dpr
+				// 	canvas.height = res[0].height * dpr
+				// 	ctx.scale(dpr, dpr)
+
+				// 	ctx.fillStyle = '#ff0000';
+				// 	ctx.fillRect(0, 0, canvas.width, canvas.height)
+				// 	console.log(canvas.width, canvas.height);
+					
+				// })
+
+				wx.hideLoading({
+					success: (res) => {
+						_this.setData({
+							showQRCode: true,
+							qrCodeSrc: img,
+							qrCodeFilePath
+						})
+					},
+				})
+
+			},
+			fail(err) {
+				wx.hideLoading()
+				console.log(err);
+			}
+		})
+	},
+
+	onHideQRCode(e) {
+		this.setData({
+			showQRCode: false
+		})
+	},
+
+	onCatchtouchmove(e) {
+		return true
+	},
+
+	onDownloadImage(url) {
+		return new Promise((resolve, reject) => {
+			wx.downloadFile({
+				url: url,
+				success(res) {
+					if (res && res.statusCode === 200) {
+						resolve(res.tempFilePath);
+					}
+				},
+				fail(err) {
+					reject(err);
+				},
+			});
+		});
+	},
+
+	onSaveImage(e) {
+		const _this = this
+		wx.saveImageToPhotosAlbum({
+			filePath: this.data.qrCodeFilePath,
+			success(res) {
+				wx.showToast({
+					title: '保存成功',
+					icon: 'success',
+					mask: true,
+					success() {
+						_this.setData({
+							showQRCode: false
+						})
+					}
+				})
+			},
+			fail(err) {
+				console.log(err);
+			}
+		})
+	}
 })

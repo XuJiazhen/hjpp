@@ -61,6 +61,9 @@
 	overflow: hidden;
 	padding: 10px 20px;
 	box-sizing: border-box;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
 }
 
 .new-left {
@@ -68,6 +71,20 @@
 	flex-direction: column;
 	justify-content: center;
 	width: 60%;
+}
+
+.new-right {
+	width: 220rpx;
+	height: 161rpx;
+	border-radius: 6px;
+	overflow: hidden;
+}
+
+.left-title {
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 1;
+	overflow: hidden;
 }
 
 .left-brief {

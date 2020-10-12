@@ -42,6 +42,14 @@ var filter = {
 			return true
 		}
 		return false
+	},
+
+	generateRulesTable: function (rules) {
+		return rules
+	},
+
+	formatMoney: function(money) {
+		return money ? money.split('.')[0].toString() + '元' : ''
 	}
 }
 
@@ -49,5 +57,7 @@ module.exports = {
 	formatPrice: filter.formatPrice,
 	splitKeywords: filter.splitKeywords,
 	getIdentity: filter.getIdentity,
-	multiSelect: filter.multiSelect
+	multiSelect: filter.multiSelect,
+	generateRulesTable: filter.generateRulesTable,
+	formatMoney: filter.formatMoney
 }

@@ -35,27 +35,46 @@
 	</view>
 
 	<view class="user-group">
-		<view class="captain-brief">
-			<view class="brief-title">
-				<text>团长简介</text>
-			</view>
-			<view class="brief-content">
-				<text>可以在这里写点什么以作简介，占位。</text>
-			</view>
-		</view>
-
 		<view class="member-info">
 			<view class="member-title">
 				<text>团员 {{ members.length }} 人</text>
 			</view>
-			<view class="member-content">
+			<view class="member-content" wx:if="{{ members.length !==0 }}">
 				<view class="avatar" wx:for="{{ members }}" wx:key="index">
 					<image class="pic" src="{{ item.avatar }}"></image>
 				</view>
 			</view>
 		</view>
-	</view>
 
+		<view class="activity-info">
+			<view class="info-title">
+				<text>活动规则</text>
+			</view>
+
+			<view class="info-content">
+				<view class="count-down">
+					<text class="date-text">剩余 {{ countDown ? countDown : '00:00:00:00' }} 后结束</text>
+				</view>
+				<view class="member-reward">
+					<view class="item th"><text>阶段</text></view>
+					<view class="item th"><text>人数</text></view>
+					<view class="item th"><text>奖励</text></view>
+					<view class="item td phase"><text>一</text></view>
+					<view class="item td"><text>{{ project.activity_info.member_prize[0].member_num }}</text></view>
+					<view class="item td"><text>减 <text class="money">{{ filter.formatMoney(project.activity_info.member_prize[0].member_prize) }}</text> 首付/人</text></view>
+					<view class="item td phase"><text>二</text></view>
+					<view class="item td"><text>{{ project.activity_info.member_prize[1].member_num }}</text></view>
+					<view class="item td"><text>减 <text class="money">{{ filter.formatMoney(project.activity_info.member_prize[1].member_prize) }}</text> 首付/人</text></view>
+					<view class="item td phase"><text>三</text></view>
+					<view class="item td"><text>{{ project.activity_info.member_prize[2].member_num }}</text></view>
+					<view class="item td"><text>减 <text class="money">{{ filter.formatMoney(project.activity_info.member_prize[2].member_prize) }}</text> 首付/人</text></view>
+				</view>
+				<view class="captain-reward" wx:if="{{ isThisCaptain }}">
+					<text class="money-text">团长预计获益 <text class="money">{{ project.activity_info.captain_prize * members.length }}</text> 元</text>
+				</view>
+			</view>
+		</view>
+	</view>
 
 	<view class="section other">
 		<view class="other-top">
@@ -69,7 +88,7 @@
 		</view>
 
 		<project-item activity wx:if="{{ other_activities.length !== 0 }}" list="{{ other_activities }}" />
-
+		<view wx:else class="other-none"><text>暂无其它开团</text></view>
 	</view>
 
 </view>
@@ -105,3 +124,16 @@
 		</block>
 	</view>
 </view>
+
+<view class="qr-code-icon" bind:tap="onGenerateQRCode">
+	<text class="icon iconfont icon-QRcode"></text>
+</view>
+
+<view class="qr-code-mask" wx:if="{{ showQRCode }}" catchtouchmove="onCatchtouchmove" bind:tap="onHideQRCode">
+	<view class="wrapper">
+		<image class="pic" src="{{ qrCodeSrc }}" mode="aspectFit" show-menu-by-longpress></image>
+	</view>
+	<view class="save-btn" catchtap="onSaveImage">保存到相册</view>
+</view>
+
+<!-- <canvas class="qr-code" type="2d" id="qrCode"></canvas> -->
