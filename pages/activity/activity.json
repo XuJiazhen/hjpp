@@ -1,5 +1,13 @@
 {
   "usingComponents": {
-    "project-item": "/components/project-item/index" 
-  }
+    "project-item": "/components/project-item/index"
+  },
+  "navigationStyle": "default",
+  "backgroundTextStyle": "light",
+  "navigationBarBackgroundColor": "#568690",
+  "navigationBarTitleText": "活动详情",
+  "navigationBarTextStyle": "white",
+  "enablePullDownRefresh": false,
+  "backgroundColorTop": "#ffffff",
+  "backgroundColorBottom": "#ffffff"
 }

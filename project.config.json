@@ -124,6 +124,19 @@
         {
           "name": "pages/article/content/content",
           "pathName": "pages/article/content/content",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/index/index",
+          "pathName": "pages/index/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/poster/poster",
+          "pathName": "pages/poster/poster",
+          "query": "",
           "scene": null
         }
       ]

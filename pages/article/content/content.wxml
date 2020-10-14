@@ -1,8 +1,8 @@
 <web-view src="{{ url }}">
-	<cover-view class="fixed-bottom">
+	<cover-view class="fixed-bottom" wx:if="{{ shared }}">
 		<cover-view class="left">
-			<cover-view class="avatar">
-				<cover-image class="pic" src="{{ avatarSrc }}"></cover-image>
+			<cover-view class="avatar" bind:tap="toActivityListPage">
+				<cover-image class="pic" src="{{ realUserInfo.avatar }}"></cover-image>
 			</cover-view>
 			<cover-view class="info">
 				<cover-view class="name">{{ realUserInfo.name }}</cover-view>

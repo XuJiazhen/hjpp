@@ -1,0 +1,19 @@
+<view class="poster">
+  <image class="pic" src="{{ imagePath }}"></image>
+</view>
+
+<view class="fixed-bottom">
+  <view class="bottom-item">
+    <button class="plain wechat">
+      <text class="icon iconfont icon-weixin"></text>
+    </button>
+    <text class="text">分享给好友</text>
+  </view>
+  <view class="bottom-item">
+    <button class="plain download" bind:tap="onSaveImage">
+      <text class="icon iconfont icon-xiazai"></text>
+    </button>
+    <text class="text">下载到本地</text>
+  </view>
+</view>
+<painter style="position:fixed;top:-9999rpx" palette="{{ template }}" bind:imgOK="onImgOK" widthPixels="1000" />

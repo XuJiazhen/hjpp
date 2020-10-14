@@ -1,2 +1,18 @@
-<!--pages/article/list/list.wxml-->
-<text>pages/article/list/list.wxml</text>
+<view class="article">
+  <view class="article-content" bind:tap="toArticleContentPage" wx:for="{{ list }}" wx:for-item="article" wx:key="index"
+    data-url="{{ article.url }}" data-title="{{ article.title }}" data-pic="{{ article.pic }}">
+    <view class="new-article">
+      <view class="new-left">
+        <text class="left-title">{{ article.title }}</text>
+        <text class="left-brief">{{ article.describe }}</text>
+        <!-- <view class="left-keywords">
+						<text class="keyword">关键字</text>
+						<text class="keyword">关键字</text>
+					</view> -->
+      </view>
+      <view class="new-right">
+        <image class="pic" mode="aspectFill" src="{{ article.pic }}"></image>
+      </view>
+    </view>
+  </view>
+</view>

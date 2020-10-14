@@ -7,10 +7,10 @@ Page({
 
 	onLoad: function (options) {
 		const _this = this
-		const id = options.id
+		const url = options.from ? `activity/captainActivities/${options.id}` : `mine/member/info?id=${options.id}`
 
 		wx.request({
-			url: `${app.globalData.baseUrl}/mine/member/info?id=${id}`,
+			url: `${app.globalData.baseUrl}/${url}`,
 			method: 'GET',
 			header: {
 				'x-user-token': wx.getStorageSync('skey'),

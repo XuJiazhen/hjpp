@@ -1,0 +1,13 @@
+{
+  "usingComponents": {
+    "painter":"/components/painter/painter"
+  },
+  "navigationStyle": "default",
+  "backgroundTextStyle": "dark",
+  "navigationBarBackgroundColor": "#ffffff",
+  "navigationBarTitleText": "慧建拼拼-海报",
+  "navigationBarTextStyle": "black",
+  "enablePullDownRefresh": false,
+  "backgroundColorTop": "#f8f8f8",
+  "backgroundColorBottom": "#f8f8f8"
+}

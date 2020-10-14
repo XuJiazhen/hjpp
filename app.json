@@ -15,7 +15,8 @@
     "pages/company/company",
     "pages/instruction/instruction",
     "pages/article/content/content",
-    "pages/article/list/list"
+    "pages/article/list/list",
+    "pages/poster/poster"
   ],
   "window": {
     "navigationStyle": "default",

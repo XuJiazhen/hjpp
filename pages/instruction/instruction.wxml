@@ -20,7 +20,7 @@
 				<view class="icon-wrap">
 					<text class="icon">X</text>
 				</view>
-				<text class="title">XXX</text>
+				<text class="title">发起拼团</text>
 				<text class="text">XXX</text>
 				<text class="text">XXX</text>
 			</view>
@@ -29,7 +29,7 @@
 				<view class="icon-wrap">
 					<text class="icon">X</text>
 				</view>
-				<text class="title">XXX</text>
+				<text class="title">参加拼团</text>
 				<text class="text">XXX</text>
 				<text class="text">XXX</text>
 			</view>
@@ -38,7 +38,7 @@
 				<view class="icon-wrap">
 					<text class="icon">X</text>
 				</view>
-				<text class="title">XXX</text>
+				<text class="title">查看项目</text>
 				<text class="text">XXX</text>
 				<text class="text">XXX</text>
 			</view>

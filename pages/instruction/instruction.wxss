@@ -35,7 +35,7 @@ page {
 
 .title {
   font-weight: bold;
-  margin: 10px 0;
+  margin-bottom: 10px;
 }
 
 .title .hr {

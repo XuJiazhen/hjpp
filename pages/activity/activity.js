@@ -14,9 +14,6 @@ Page({
 		isThisCaptain: Boolean,
 		isThisMember: Boolean,
 		wxUserInfo: Object,
-		showQRCode: false,
-		qrCodeSrc: '',
-		qrCodeFilePath: ''
 	},
 
 	onLoad: function (options) {
@@ -422,9 +419,6 @@ Page({
 
 	onGenerateQRCode(e) {
 		const _this = this
-		wx.showLoading({
-			title: '正在生成',
-		})
 		const realUserInfo = wx.getStorageSync('realUserInfo')
 
 		wx.request({
@@ -437,57 +431,27 @@ Page({
 				'x-user-token': wx.getStorageSync('skey'),
 				'x-user-id': wx.getStorageSync('openid')
 			},
-			async success(res) {
-				const {
-					img
-				} = res.data
+			success(res) {
 
-				const qrCodeFilePath = await _this.onDownloadImage(res.data.img)
-				// const qrCodeBgFilePath = '../../assets/images/share_bg.png'
-				// const query = wx.createSelectorQuery()
-				// query.select('#qrCode').fields({
-				// 	node: true,
-				// 	size: true
-				// }).exec((res) => {
-				// 	const canvas = res[0].node
-				// 	const ctx = canvas.getContext('2d')
-				// 	const dpr = wx.getSystemInfoSync().pixelRatio
-				// 	canvas.width = res[0].width * dpr
-				// 	canvas.height = res[0].height * dpr
-				// 	ctx.scale(dpr, dpr)
 
-				// 	ctx.fillStyle = '#ff0000';
-				// 	ctx.fillRect(0, 0, canvas.width, canvas.height)
-				// 	console.log(canvas.width, canvas.height);
-					
-				// })
+				const title = _this.data.project.project_name
+				const qrCode = res.data.img
 
-				wx.hideLoading({
-					success: (res) => {
-						_this.setData({
-							showQRCode: true,
-							qrCodeSrc: img,
-							qrCodeFilePath
+				wx.navigateTo({
+					url: '/pages/poster/poster',
+					success(res) {
+						res.eventChannel.emit('acceptDataFromOpenerPage', {
+							title,
+							qrCode
 						})
-					},
+					}
 				})
-
 			},
 			fail(err) {
 				wx.hideLoading()
 				console.log(err);
 			}
 		})
-	},
-
-	onHideQRCode(e) {
-		this.setData({
-			showQRCode: false
-		})
-	},
-
-	onCatchtouchmove(e) {
-		return true
 	},
 
 	onDownloadImage(url) {

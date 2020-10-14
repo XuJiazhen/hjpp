@@ -109,8 +109,34 @@ Component({
 			})
 		},
 		toArticleListPage(e) {
-			wx.navigateTo({
-				url: `/pages/article/list/list`,
+			wx.request({
+				url: `${app.globalData.baseUrl}/article`,
+				method: 'GET',
+				header: {
+					'x-user-token': wx.getStorageSync('skey'),
+					'x-user-id': wx.getStorageSync('openid')
+				},
+				success(res) {
+					console.log('GET ARTICLES: ', res);
+					const {
+						data
+					} = res
+
+					if (data && data.status === 200) {
+						wx.navigateTo({
+							url: `/pages/article/list/list`,
+							success(res) {
+								res.eventChannel.emit('acceptDataFromOpenerPage', {
+									data: data.data
+								})
+							}
+						})
+					}
+
+				},
+				fail(err) {
+					console.log(err);
+				}
 			})
 		}
 	},

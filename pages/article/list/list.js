@@ -2,24 +2,37 @@ const app = getApp()
 
 Page({
   data: {
-
+    articles: {},
+    list: []
   },
 
   onLoad: function (options) {
     const _this = this
 
-    wx.request({
-      url: `${app.globalData.baseUrl}/article`,
-      method: 'GET',
-      header: {
-        'x-user-token': wx.getStorageSync('skey'),
-        'x-user-id': wx.getStorageSync('openid')
-      },
+    const eventChannel = this.getOpenerEventChannel()
+    eventChannel.on('acceptDataFromOpenerPage', function (data) {
+      _this.setData({
+        articles: data.data,
+        list: data.data.data
+      })
+    })
+  },
+
+  toArticleContentPage(e) {
+    const {
+      url,
+      title,
+      pic
+    } = e.currentTarget.dataset
+
+    wx.navigateTo({
+      url: '/pages/article/content/content',
       success(res) {
-        console.log('GET ARTICLES: ', res);
-      },
-      fail(err) {
-        console.log(err);
+        res.eventChannel.emit('acceptDataFromOpenerPage', {
+          url,
+          title,
+          pic
+        })
       }
     })
   },
