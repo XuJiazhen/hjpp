@@ -35,6 +35,10 @@
 }
 
 .detail .row-label {
+	display: inline-block;
+	width: 150rpx;
+	text-align: justify;
+	text-align-last: justify;
 	color: #808080;
 }
 
@@ -76,12 +80,13 @@
 }
 
 .member-content {
-	margin-bottom: 10px;
-}
-
-.member-content {
 	display: flex;
 	align-items: center;
+}
+
+.member-content,
+.info-content {
+	padding: 20rpx 0;
 }
 
 .info .avatar {
@@ -135,13 +140,31 @@
 }
 
 .remarks {
-	color: #568690;
 	padding: 10px 0;
-	text-align: center;
 	border: 1px solid #568690;
 	border-top: none;
 	border-bottom-left-radius: 6px;
 	border-bottom-right-radius: 6px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.text-share {
+	color: #568690 !important;
+	font-size: 14px !important;
+	margin: 0 !important;
+	padding: 0 !important;
+	border-radius: 0 !important;
+	font-weight: normal !important;
+	display: flex !important;
+	border: none !important;
+	justify-content: center;
+	align-items: center;
+}
+
+.text-share .icon {
+	margin-left: 1px;
 }
 
 .other {
@@ -273,4 +296,28 @@
 
 .qr-code-icon .icon {
 	font-size: 22px !important;
+}
+
+.activity-header {
+	margin: 0 20rpx;
+	padding: 5px 0;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	border-bottom: 1px solid #f8f8f8;
+}
+
+.user-group .activity-header {
+	margin: 0;
+}
+
+.activity-header .title {
+	font-size: 16px;
+	color: #568690;
+	font-weight: bold;
+}
+
+.activity-header .more {
+	font-size: 14px;
+	color: #808080;
 }

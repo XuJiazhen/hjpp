@@ -4,7 +4,7 @@
 
 <view class="fixed-bottom">
   <view class="bottom-item">
-    <button class="plain wechat">
+    <button class="plain wechat" open-type="share">
       <text class="icon iconfont icon-weixin"></text>
     </button>
     <text class="text">分享给好友</text>

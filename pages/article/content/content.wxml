@@ -9,7 +9,6 @@
 				<cover-view class="identity">团长</cover-view>
 			</cover-view>
 		</cover-view>
-
 		<cover-view class="right">
 			<cover-view class="cus-btn chat">聊天</cover-view>
 			<cover-view class="cus-btn call">电话</cover-view>

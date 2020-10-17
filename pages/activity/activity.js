@@ -11,6 +11,7 @@ Page({
 		other: Array,
 		deadline: String,
 		countDown: '',
+		detail: {},
 		isThisCaptain: Boolean,
 		isThisMember: Boolean,
 		wxUserInfo: Object,
@@ -278,6 +279,44 @@ Page({
 						})
 					}
 
+					const detail = [{
+							label: '开发商',
+							text: project.developer
+						},
+						{
+							label: '关键字',
+							text: project.keywords
+						},
+						// {
+						// 	label: '停车位',
+						// 	text: project.parking_number
+						// },
+						{
+							label: '物业费',
+							text: project.property_manage_fee + ' 平/月'
+						},
+						{
+							label: '产权期',
+							text: project.term + ' 年'
+						},
+						// {
+						// 	label: '住宅面积',
+						// 	text: project.building_area
+						// },
+						// {
+						// 	label: '绿化面积',
+						// 	text: project.green_rate + ' %'
+						// },
+						{
+							label: '物业公司',
+							text: project.property_manage
+						},
+						// {
+						// 	label: '成交方式',
+						// 	text: project.payment
+						// }
+					]
+
 					console.log('IS THIS CAPTAIN: ', isThisCaptain);
 					console.log('IS THIS MEMBER: ', isThisMember);
 
@@ -289,6 +328,7 @@ Page({
 						members,
 						other,
 						other_activities,
+						detail,
 						deadline: project.activity_info.finish_time,
 						isThisCaptain,
 						isThisMember
@@ -358,6 +398,44 @@ Page({
 										})
 									}
 
+									const detail = [{
+											label: '开发商',
+											text: project.developer
+										},
+										{
+											label: '关键字',
+											text: project.keywords
+										},
+										// {
+										// 	label: '停车位',
+										// 	text: project.parking_number
+										// },
+										{
+											label: '物业费',
+											text: project.property_manage_fee + ' 平/月'
+										},
+										{
+											label: '产权期',
+											text: project.term + ' 年'
+										},
+										// {
+										// 	label: '住宅面积',
+										// 	text: project.building_area
+										// },
+										// {
+										// 	label: '绿化面积',
+										// 	text: project.green_rate + ' %'
+										// },
+										{
+											label: '物业公司',
+											text: project.property_manage
+										},
+										// {
+										// 	label: '成交方式',
+										// 	text: project.payment
+										// }
+									]
+
 									console.log('IS THIS CAPTAIN: ', isThisCaptain);
 									console.log('IS THIS MEMBER: ', isThisMember);
 
@@ -369,6 +447,7 @@ Page({
 										members,
 										other,
 										other_activities,
+										detail,
 										deadline: project.activity_info.finish_time,
 										isThisCaptain,
 										isThisMember
@@ -418,77 +497,8 @@ Page({
 	},
 
 	onGenerateQRCode(e) {
-		const _this = this
-		const realUserInfo = wx.getStorageSync('realUserInfo')
-
-		wx.request({
-			url: `${app.globalData.baseUrl}/activity/qrcode`,
-			method: 'POST',
-			data: {
-				src: `/pages/activity/activity?id=${this.data.id}&uid=${realUserInfo.id}`
-			},
-			header: {
-				'x-user-token': wx.getStorageSync('skey'),
-				'x-user-id': wx.getStorageSync('openid')
-			},
-			success(res) {
-
-
-				const title = _this.data.project.project_name
-				const qrCode = res.data.img
-
-				wx.navigateTo({
-					url: '/pages/poster/poster',
-					success(res) {
-						res.eventChannel.emit('acceptDataFromOpenerPage', {
-							title,
-							qrCode
-						})
-					}
-				})
-			},
-			fail(err) {
-				wx.hideLoading()
-				console.log(err);
-			}
+		wx.navigateTo({
+			url: `/pages/poster/poster?id=${this.data.id}&title=${this.data.project.project_name}`,
 		})
 	},
-
-	onDownloadImage(url) {
-		return new Promise((resolve, reject) => {
-			wx.downloadFile({
-				url: url,
-				success(res) {
-					if (res && res.statusCode === 200) {
-						resolve(res.tempFilePath);
-					}
-				},
-				fail(err) {
-					reject(err);
-				},
-			});
-		});
-	},
-
-	onSaveImage(e) {
-		const _this = this
-		wx.saveImageToPhotosAlbum({
-			filePath: this.data.qrCodeFilePath,
-			success(res) {
-				wx.showToast({
-					title: '保存成功',
-					icon: 'success',
-					mask: true,
-					success() {
-						_this.setData({
-							showQRCode: false
-						})
-					}
-				})
-			},
-			fail(err) {
-				console.log(err);
-			}
-		})
-	}
 })

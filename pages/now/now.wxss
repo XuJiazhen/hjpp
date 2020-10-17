@@ -12,7 +12,7 @@
 }
 
 .activity-header .title {
-	font-size: 20px;
+	font-size: 16px;
 	color: #568690;
 	font-weight: bold;
 }

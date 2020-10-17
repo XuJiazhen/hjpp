@@ -1,3 +1,5 @@
+const app = getApp()
+
 Page({
   data: {
     template: {},
@@ -6,41 +8,62 @@ Page({
 
   onLoad: function (options) {
     const _this = this
+    const realUserInfo = wx.getStorageSync('realUserInfo')
+
     wx.showLoading({
       title: '正在生成',
-    })
-    const eventChannel = this.getOpenerEventChannel()
-    eventChannel.on('acceptDataFromOpenerPage', function (data) {
-
-      const template = {
-        background: '/assets/images/poster_cover.png',
-        width: '604rpx',
-        height: '936rpx',
-        borderRadius: '0',
-        views: [{
-          type: "text",
-          text: `【${data.title}】`,
-          css: {
-            top: "152rpx",
-            left: "100rpx",
-            fontSize: "36rpx",
-            fontWeight: 'bold',
-          },
-        }, {
-          type: 'image',
-          url: data.qrCode,
-          css: {
-            bottom: '10%',
-            left: '202rpx',
-            width: '200rpx',
-            height: '226rpx',
-            mode: 'scaleToFill'
-          },
-        }],
+      success() {
+        _this.onGeneratePoster(options.id, realUserInfo.id, options.title)
       }
-      _this.setData({
-        template
-      })
+    })
+  },
+
+  onGeneratePoster(id, uid, title) {
+    const _this = this
+    wx.request({
+      url: `${app.globalData.baseUrl}/activity/qrcode`,
+      method: 'POST',
+      data: {
+        src: `/pages/activity/activity?id=${id}&uid=${uid}`
+      },
+      header: {
+        'x-user-token': wx.getStorageSync('skey'),
+        'x-user-id': wx.getStorageSync('openid')
+      },
+      success(res) {
+        const qrCode = res.data.img
+        const template = {
+          background: '/assets/images/poster_cover.png',
+          width: '604rpx',
+          height: '936rpx',
+          borderRadius: '0',
+          views: [{
+            type: "text",
+            text: `【${title}】`,
+            css: {
+              top: "152rpx",
+              left: "100rpx",
+              color: 'red',
+              fontSize: "36rpx",
+              fontWeight: 'bold',
+            },
+          }, {
+            type: 'image',
+            url: qrCode,
+            css: {
+              bottom: '10%',
+              left: '202rpx',
+              width: '200rpx',
+              height: '226rpx',
+              mode: 'scaleToFill'
+            },
+          }],
+        }
+        _this.setData({
+          template
+        })
+
+      }
     })
   },
 

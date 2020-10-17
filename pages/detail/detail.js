@@ -26,14 +26,7 @@ Page({
 				const { info } = res.data
 
 				const detail = [
-					{
-						label: '住宅面积',
-						text: info.building_area
-					},
-					{
-						label: '绿化面积',
-						text: info.green_rate + ' %'
-					},
+
 					{
 						label: '开发商',
 						text: info.developer
@@ -47,16 +40,24 @@ Page({
 						text: info.parking_number
 					},
 					{
-						label: '物业公司',
-						text: info.property_manage
-					},
-					{
 						label: '物业费',
 						text: info.property_manage_fee + ' 平/月'
 					},
 					{
 						label: '产权期',
 						text: info.term + ' 年'
+					},
+					{
+						label: '住宅面积',
+						text: info.building_area
+					},
+					{
+						label: '绿化面积',
+						text: info.green_rate + ' %'
+					},
+					{
+						label: '物业公司',
+						text: info.property_manage
 					},
 					{
 						label: '成交方式',
@@ -343,7 +344,7 @@ Page({
 	toInitiateOrder(e) {
 		const _this = this
 		wx.showModal({
-			title: '是否发起拼单？',
+			title: '是否发起拼团？',
 			cancelText: '否',
 			cancelColor: '#935557',
 			confirmText: '是',

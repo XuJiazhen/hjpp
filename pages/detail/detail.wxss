@@ -102,6 +102,10 @@
 }
 
 .detail .row-label {
+	display: inline-block;
+	width: 150rpx;
+	text-align: justify;
+	text-align-last: justify;
 	color: #808080;
 }
 
