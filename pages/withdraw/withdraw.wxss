@@ -1,0 +1,25 @@
+.clinched-item {
+	display: flex;
+	height: 100rpx;
+	margin: 0 20rpx;
+	justify-content: space-between;
+	align-items: center;
+	background-color: #ffffff;
+	box-shadow: 0 4rpx 20rpx 0 rgba(212, 217, 223, .5);
+	margin-top: 20rpx;
+	border-radius: 6px;
+	padding-left: 20rpx;
+	overflow: hidden;
+}
+
+.clinched-item .withdraw {
+	height: 100%;
+	border-radius: 0;
+	margin: 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-weight: normal;
+	background-color: #568690;
+	color: #ffffff;
+}

@@ -5,4 +5,5 @@
   --light-grey-bg: #f8f8f8;
   --light-red: #ff5b5c;
   --light-yellow: #fd911f;
+  --light-green: #07c160;
 }

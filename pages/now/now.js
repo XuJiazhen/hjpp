@@ -91,6 +91,9 @@ Page({
 			},
 			fail(err) {
 				wx.hideLoading()
+			},
+			complete() {
+				wx.hideLoading()
 			}
 		})
 	},

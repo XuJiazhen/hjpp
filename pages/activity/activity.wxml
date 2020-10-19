@@ -9,33 +9,6 @@
 
 	<project-item isUser wx:if="{{ list.length !== 0 }}" list="{{ list }}" />
 
-	<!-- <view class="detail">
-		<view class="row">
-			<text class="row-label">开发商：</text>
-			<text class="row-content">{{ project.developer }}</text>
-		</view>
-
-		<view class="row">
-			<text class="row-label">物业公司：</text>
-			<text class="row-content">{{ project.property_manage }}</text>
-		</view>
-
-		<view class="row">
-			<text class="row-label">物业费：</text>
-			<text class="row-content">{{ project.property_manage_fee }} /平/月</text>
-		</view>
-
-		<view class="row">
-			<text class="row-label">关键字：</text>
-			<text class="row-content">{{ project.keywords }}</text>
-		</view>
-
-		<view class="row">
-			<text class="row-label">产权期：</text>
-			<text class="row-content">{{ project.term }} 年</text>
-		</view>
-	</view> -->
-
 	<view class="detail">
 		<view class="row" wx:for="{{ detail }}" wx:key="index">
 			<text class="row-label">{{ item.label }}：</text>
@@ -54,7 +27,8 @@
 				</view>
 			</view>
 			<view class="member-content" wx:if="{{ members.length !==0 }}">
-				<view class="avatar" wx:for="{{ members }}" wx:key="index">
+				<view class="avatar" wx:for="{{ members }}" wx:key="index" bind:tap="showMemberCard"
+					data-avatar="{{ item.avatar }}" data-name="{{ item.name }}" data-phone="{{ item.cellphone }}">
 					<image class="pic" src="{{ item.avatar }}"></image>
 				</view>
 			</view>
@@ -148,4 +122,25 @@
 
 <view class="qr-code-icon" bind:tap="onGenerateQRCode">
 	<text class="icon iconfont icon-QRcode"></text>
+</view>
+
+<view class="member-card" wx:if="{{ showMemberCard }}">
+	<view class="card-main">
+		<view class="main-header">
+			<text class="icon iconfont icon-close" bind:tap="closeMemberCard"></text>
+		</view>
+
+		<view class="main-avatar-wrapper">
+			<view class="main-avatar">
+				<image class="pic" src="{{ member.avatar }}" mode="aspectFit"></image>
+			</view>
+		</view>
+
+		<view class="main-row name">
+			<text class="icon iconfont icon-account"></text><text class="row-content">{{ member.name }}</text>
+		</view>
+		<view class="main-row phone" bind:tap="makePhoneCall" data-phone="{{ member.phone }}">
+			<text class="icon iconfont icon-phone"></text><text class="row-content">{{ member.phone }}</text>
+		</view>
+	</view>
 </view>

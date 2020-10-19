@@ -138,6 +138,11 @@
           "pathName": "pages/poster/poster",
           "query": "",
           "scene": null
+        },
+        {
+          "name": "pages/withdraw/withdraw",
+          "pathName": "pages/withdraw/withdraw",
+          "scene": null
         }
       ]
     }

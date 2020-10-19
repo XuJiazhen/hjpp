@@ -18,7 +18,7 @@ Page({
 		],
 		options: [
 			{
-				icon: 'icon-bx-user',
+				icon: 'icon-accountmultiple',
 				text: '我的团员'
 			},
 			{
@@ -30,30 +30,31 @@ Page({
 				text: '成员成交'
 			},
 			{
-				icon: 'icon-bx-user',
+				icon: 'icon-city',
 				text: '参与项目'
 			},
 			{
-				icon: 'icon-bx-bell',
+				icon: 'icon-bxs-user',
 				text: '到访项目'
 			},
 			{
-				icon: 'icon-bx-dollar',
+				icon: 'icon-gavel',
 				text: '已购房产'
 			},
 			{
-				icon: 'icon-bx-user',
+				icon: 'icon-bookopen',
 				text: '公司介绍'
 			},
 			{
-				icon: 'icon-bx-bell',
+				icon: 'icon-pencilbox',
 				text: '意见反馈'
 			},
 			{
-				icon: 'icon-bx-dollar',
+				icon: 'icon-help',
 				text: '使用说明'
 			}
 		],
+		totalIncome: 0
 	},
 
 	onLoad(options) {
@@ -173,6 +174,18 @@ Page({
 	toInstructionPage(index) {
 		wx.navigateTo({
 			url: `/pages/instruction/instruction?index=${index}`,
+		})
+	},
+
+	onWithdraw(e) {
+		wx.navigateTo({
+			url: '/pages/withdraw/withdraw',
+		})
+	},
+
+	onIncome(e) {
+		wx.navigateTo({
+			url: '/pages/income/income',
 		})
 	}
 })

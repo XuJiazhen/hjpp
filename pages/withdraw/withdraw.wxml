@@ -1,0 +1,6 @@
+<view wx:if="{{ clinchedList && clinchedList.length !== 0 }}" class="clinched-item" wx:for="{{ clinchedList }}" wx:key="index">
+	<text class="project">{{ item.search_project_name }}</text>
+	<text class="member">{{ item.search_member_name }}</text>
+	<text class="money">{{ item.cal_captain_money }}</text>
+	<button class="withdraw" size="mini">提现</button>
+</view>

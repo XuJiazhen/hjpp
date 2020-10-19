@@ -85,6 +85,10 @@ page {
   color: #ffffff;
 }
 
+.icon-wrap .icon {
+  font-size: 24px !important;
+}
+
 .advertising {
   height: 50px;
   margin: 0 20rpx;

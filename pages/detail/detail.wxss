@@ -60,6 +60,10 @@
 .base .location {
 	font-size: 14px;
 	color: #568690;
+	height: 50rpx;
+	display: flex;
+	align-items: center;
+	overflow: hidden;
 }
 
 .price {
@@ -93,8 +97,8 @@
 .detail .row {
 	width: 100%;
 	border-bottom: 1px solid #f8f8f8;
-	padding: 10px 0;
 	font-size: 14px;
+	padding: 20rpx 0;
 }
 
 .detail .row:last-child {
@@ -102,10 +106,6 @@
 }
 
 .detail .row-label {
-	display: inline-block;
-	width: 150rpx;
-	text-align: justify;
-	text-align-last: justify;
 	color: #808080;
 }
 
@@ -122,14 +122,14 @@ scroll-view {
 }
 
 .tab {
-  display: flex;
-  border-color:  #ffffff;
-  color: #000000;
-  white-space: nowrap;
-  box-sizing: border-box;
-  cursor: pointer;
-  justify-content: center;
-  align-items: center;
+	display: flex;
+	border-color: #ffffff;
+	color: #000000;
+	white-space: nowrap;
+	box-sizing: border-box;
+	cursor: pointer;
+	justify-content: center;
+	align-items: center;
 	flex-direction: column;
 	padding: 10rpx 20rpx;
 	font-size: 14px;

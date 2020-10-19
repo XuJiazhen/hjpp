@@ -6,6 +6,7 @@ Page({
 		detail: [],
 		album: [],
 		index: 0,
+		info: {}
 	},
 
 	onLoad: function (options) {
@@ -78,6 +79,7 @@ Page({
 				
 
 				_this.setData({
+					info,
 					id: options.id,
 					project: info,
 					detail,
@@ -388,6 +390,15 @@ Page({
 					return
 				}
 			}
+		})
+	},
+
+	onOpenLocation(e) {
+		wx.openLocation({
+			latitude: Number(this.data.info.latitude),
+			longitude: Number(this.data.info.longitude),
+			address: this.data.info.address,
+			name: this.data.info.project_name
 		})
 	}
 })

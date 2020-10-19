@@ -1,33 +1,44 @@
 <view wx:if="{{ isRegistered }}" class="container">
-	<block wx:if="{{ created.length !== 0 }}">
-		<view class="section {{ attended.length !== 0 ? 'created' : '' }}">
-			<view class="activity-header">
-				<view class="title">
-					<text class="text" bindtap="onGetUserInfo">已创建拼团</text>
+
+	<block wx:if="{{ created.length !== 0 || attended.length !== 0 }}">
+		<block wx:if="{{ created.length !== 0 }}">
+			<view class="section {{ attended.length !== 0 ? 'created' : '' }}">
+				<view class="activity-header">
+					<view class="title">
+						<text class="text" bindtap="onGetUserInfo">已创建拼团</text>
+					</view>
+					<view class="more">
+						<text class="text">查看更多</text>
+						<text class="icon iconfont icon-bx-chevron-right"></text>
+					</view>
 				</view>
-				<view class="more">
-					<text class="text">查看更多</text>
-					<text class="icon iconfont icon-bx-chevron-right"></text>
-				</view>
+				<project-item activity list="{{ my_activities }}" />
 			</view>
-			<project-item activity list="{{ my_activities }}" />
+		</block>
+
+		<block wx:if="{{ attended.length !== 0 }}">
+			<view class="section attended">
+				<view class="activity-header">
+					<view class="title">
+						<text class="text" bindtap="onGetUserInfo">已参与拼团</text>
+					</view>
+					<view class="more">
+						<text class="text">查看更多</text>
+						<text class="icon iconfont icon-bx-chevron-right"></text>
+					</view>
+				</view>
+				<project-item activity list="{{ joining_activities }}" />
+			</view>
+		</block>
+	</block>
+	<block wx:else>
+		<view class="activity-header">
+			<view class="title">
+				<text class="text">暂无任何拼团信息</text>
+			</view>
 		</view>
 	</block>
 
-	<block wx:if="{{ attended.length !== 0 }}">
-		<view class="section attended">
-			<view class="activity-header">
-				<view class="title">
-					<text class="text" bindtap="onGetUserInfo">已参与拼团</text>
-				</view>
-				<view class="more">
-					<text class="text">查看更多</text>
-					<text class="icon iconfont icon-bx-chevron-right"></text>
-				</view>
-			</view>
-			<project-item activity list="{{ joining_activities }}" />
-		</view>
-	</block>
 
 </view>
 <view wx:else>

@@ -15,10 +15,14 @@ Page({
 		isThisCaptain: Boolean,
 		isThisMember: Boolean,
 		wxUserInfo: Object,
+		showMemberCard: false,
+		member: {}
 	},
 
 	onLoad: function (options) {
 		console.log('OPTIONS: ', options);
+		console.log(options, wx.getStorageSync('realUserInfo'));
+
 
 		wx.showLoading({
 			title: '正在载入',
@@ -147,16 +151,11 @@ Page({
 						'x-user-id': wx.getStorageSync('openid')
 					},
 					success(res) {
-						console.log(res);
-
 						if (res.data.status === 200 && res.data) {
-
 							wx.showToast({
 								title: '已加入',
 								icon: 'none',
 								success(res) {
-									console.log(res);
-
 									wx.request({
 										url: `${app.globalData.baseUrl}/activity/info?id=${nid}`,
 										method: 'GET',
@@ -178,13 +177,6 @@ Page({
 												} = res.data.data
 
 												_this.onCountDown(project.activity_info.finish_time)
-
-												const isThisCaptain = Number(id) === Number(nid)
-												let isThisMember = false
-												members.forEach((item) => {
-													isThisMember = Number(item.pivot.activity_id) === Number(id)
-												})
-
 												_this.setData({
 													id,
 													project,
@@ -192,8 +184,7 @@ Page({
 													members,
 													other_activities,
 													deadline: project.activity_info.finish_time,
-													isThisCaptain,
-													isThisMember
+													isThisMember: true
 												})
 											} else {
 												console.log('ERRPR: ', res)
@@ -280,37 +271,37 @@ Page({
 					}
 
 					const detail = [{
-							label: '开发商',
-							text: project.developer
-						},
-						{
-							label: '关键字',
-							text: project.keywords
-						},
-						// {
-						// 	label: '停车位',
-						// 	text: project.parking_number
-						// },
-						{
-							label: '物业费',
-							text: project.property_manage_fee + ' 平/月'
-						},
-						{
-							label: '产权期',
-							text: project.term + ' 年'
-						},
-						// {
-						// 	label: '住宅面积',
-						// 	text: project.building_area
-						// },
-						// {
-						// 	label: '绿化面积',
-						// 	text: project.green_rate + ' %'
-						// },
-						{
-							label: '物业公司',
-							text: project.property_manage
-						},
+						label: '开发商',
+						text: project.developer
+					},
+					{
+						label: '关键字',
+						text: project.keywords
+					},
+					// {
+					// 	label: '停车位',
+					// 	text: project.parking_number
+					// },
+					{
+						label: '物业费',
+						text: project.property_manage_fee + ' 平/月'
+					},
+					{
+						label: '产权期',
+						text: project.term + ' 年'
+					},
+					// {
+					// 	label: '住宅面积',
+					// 	text: project.building_area
+					// },
+					// {
+					// 	label: '绿化面积',
+					// 	text: project.green_rate + ' %'
+					// },
+					{
+						label: '物业公司',
+						text: project.property_manage
+					},
 						// {
 						// 	label: '成交方式',
 						// 	text: project.payment
@@ -383,7 +374,7 @@ Page({
 
 									_this.onCountDown(project.activity_info.finish_time)
 
-									const isThisCaptain = Number(userId) === Number(uid)
+									const isThisCaptain = Number(userId) === Number(uid) || wx.getStorageSync('realUserInfo').name === captain.name
 									const isThisMember = members.some((item) => {
 										return Number(item.pivot.member_id) === Number(userId)
 									})
@@ -399,37 +390,37 @@ Page({
 									}
 
 									const detail = [{
-											label: '开发商',
-											text: project.developer
-										},
-										{
-											label: '关键字',
-											text: project.keywords
-										},
-										// {
-										// 	label: '停车位',
-										// 	text: project.parking_number
-										// },
-										{
-											label: '物业费',
-											text: project.property_manage_fee + ' 平/月'
-										},
-										{
-											label: '产权期',
-											text: project.term + ' 年'
-										},
-										// {
-										// 	label: '住宅面积',
-										// 	text: project.building_area
-										// },
-										// {
-										// 	label: '绿化面积',
-										// 	text: project.green_rate + ' %'
-										// },
-										{
-											label: '物业公司',
-											text: project.property_manage
-										},
+										label: '开发商',
+										text: project.developer
+									},
+									{
+										label: '关键字',
+										text: project.keywords
+									},
+									// {
+									// 	label: '停车位',
+									// 	text: project.parking_number
+									// },
+									{
+										label: '物业费',
+										text: project.property_manage_fee + ' 平/月'
+									},
+									{
+										label: '产权期',
+										text: project.term + ' 年'
+									},
+									// {
+									// 	label: '住宅面积',
+									// 	text: project.building_area
+									// },
+									// {
+									// 	label: '绿化面积',
+									// 	text: project.green_rate + ' %'
+									// },
+									{
+										label: '物业公司',
+										text: project.property_manage
+									},
 										// {
 										// 	label: '成交方式',
 										// 	text: project.payment
@@ -489,7 +480,7 @@ Page({
 			const m = parseInt(seconds / 60 % 60)
 			const s = parseInt(seconds % 60)
 
-			const countDown = `${ d }:${ h }:${ m }:${ s }`
+			const countDown = `${d}:${h}:${m}:${s}`
 			this.setData({
 				countDown
 			})
@@ -501,4 +492,29 @@ Page({
 			url: `/pages/poster/poster?id=${this.data.id}&title=${this.data.project.project_name}`,
 		})
 	},
+
+	showMemberCard(e) {
+		const { avatar, name, phone } = e.currentTarget.dataset
+
+		this.setData({
+			showMemberCard: true,
+			member: {
+				avatar,
+				name,
+				phone
+			}
+		})
+	},
+
+	closeMemberCard(e) {
+		this.setData({
+			showMemberCard: false
+		})
+	},
+
+	makePhoneCall(e) {
+		wx.makePhoneCall({
+			phoneNumber: e.currentTarget.dataset.phone,
+		})
+	}
 })

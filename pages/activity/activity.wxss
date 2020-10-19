@@ -35,10 +35,6 @@
 }
 
 .detail .row-label {
-	display: inline-block;
-	width: 150rpx;
-	text-align: justify;
-	text-align-last: justify;
 	color: #808080;
 }
 
@@ -320,4 +316,86 @@
 .activity-header .more {
 	font-size: 14px;
 	color: #808080;
+}
+
+.member-card {
+	background-color: #ffffff;
+	border-radius: 6px;
+	position: fixed;
+	top: 30%;
+	left: 50%;
+	transform: translate(-50%, -30%);
+	z-index: 999;
+	box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+	font-size: 14px;
+	overflow: hidden;
+	width: 400rpx;
+	transition: all .3s;
+}
+
+.card-main {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	position: relative;
+}
+
+.main-header {
+	height: 60rpx;
+	width: 100%;
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+.main-header .icon {
+	display: block;
+	height: 60rpx;
+	width: 60rpx;
+	background-color: #ff5b5c;
+	color: #ffffff;
+	text-align: center;
+	line-height: 60rpx;
+	border-bottom-left-radius: 6px;
+}
+
+.main-avatar-wrapper {
+	height: 300rpx;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.main-avatar {
+	width: 180rpx;
+	height: 180rpx;
+	border-radius: 50%;
+	overflow: hidden;
+}
+
+.main-row {
+	height: 70rpx;
+	line-height: 70rpx;
+	color: #ffffff;
+	display: flex;
+}
+
+.main-row .icon {
+	display: block;
+	width: 70rpx;
+	height: 70rpx;
+	line-height: 70rpx;
+	text-align: center;
+	font-size: 20px;
+}
+
+.main-row.name {
+	background-color: #fd921fbe;
+}
+
+.main-row.phone {
+	background-color: #07c160be;
 }

@@ -38,11 +38,11 @@
 	</view>
 </view>
 <view class="balance">
-	<view class="money">
-		<text>￥ 9999</text>
+	<view class="money" bind:tap="onIncome">
+		<text>￥ {{ totalIncome }}</text>
 	</view>
-	<view class="btn-withdraw">
-		<text>提现</text>
+	<view class="btn-withdraw" bind:tap="onWithdraw">
+		<text>去提现</text>
 	</view>
 </view>
 <view class="swiper">
@@ -57,6 +57,7 @@
 		</block>
 	</swiper>
 </view>
+
 <!-- <view class="options" style="grid-template-rows: repeat(3, {{ optionHeight }}px);">
 	<view id="option" class="option-item" wx:for="{{ options }}" wx:key="index" data-index="{{ index }}"
 		hover-class="option-active" bind:tap="onOptionTap">

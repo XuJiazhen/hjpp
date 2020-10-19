@@ -18,7 +18,7 @@
 		<view class="brief">
 			<view class="brief-item">
 				<view class="icon-wrap">
-					<text class="icon">X</text>
+					<text class="icon iconfont icon-play"></text>
 				</view>
 				<text class="title">发起拼团</text>
 				<text class="text">XXX</text>
@@ -27,7 +27,7 @@
 
 			<view class="brief-item">
 				<view class="icon-wrap">
-					<text class="icon">X</text>
+					<text class="icon iconfont icon-accountplus"></text>
 				</view>
 				<text class="title">参加拼团</text>
 				<text class="text">XXX</text>
@@ -36,7 +36,7 @@
 
 			<view class="brief-item">
 				<view class="icon-wrap">
-					<text class="icon">X</text>
+					<text class="icon iconfont icon-eye"></text>
 				</view>
 				<text class="title">查看项目</text>
 				<text class="text">XXX</text>
@@ -51,9 +51,9 @@
 
 	<view class="main">
 		<view class="title">
-				<text class="hr">—</text>
-				<text class="text">常用功能简介</text>
-				<text class="hr">—</text>
+			<text class="hr">—</text>
+			<text class="text">常用功能简介</text>
+			<text class="hr">—</text>
 		</view>
 
 		<view class="feature-item" wx:for="{{ features }}" wx:key="index">

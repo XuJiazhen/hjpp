@@ -2,7 +2,9 @@
 
 <view class="container">
 	<view class="swiper">
-		<swiper indicator-dots="true" autoplay="true" interval="5000" duration="500" circular="true" indicator-color="rgba(255, 255, 255, .5)" indicator-active-color="rgba(255, 255, 255, .9)" style="min-height: 500rpx;">
+		<swiper indicator-dots="true" autoplay="true" interval="5000" duration="500" circular="true"
+			indicator-color="rgba(255, 255, 255, .5)" indicator-active-color="rgba(255, 255, 255, .9)"
+			style="min-height: 500rpx;">
 			<block wx:for="{{  project.pic }}" wx:key="index">
 				<swiper-item>
 					<view class="swiper-item">
@@ -23,8 +25,8 @@
 			</view>
 		</view>
 
-		<view class="location">
-			<text class="icon iconfont icon-bx-chevron-left"></text>
+		<view class="location" bind:tap="onOpenLocation">
+			<text class="icon iconfont icon-guitarpick"></text>
 			<text class="text">{{ project.address }}</text>
 		</view>
 	</view>
@@ -51,13 +53,15 @@
 	<view wx:if="{{ album.length !== 0 }}" class="album-container">
 		<view class="album-tabbar">
 			<view class="tabs">
-				<view class="tab {{ idx === index ? 'active' : '' }}" wx:for="{{ album }}" wx:key="index" wx:for-index="idx" data-index="{{ idx }}" bind:tap="onTabTap">
+				<view class="tab {{ idx === index ? 'active' : '' }}" wx:for="{{ album }}" wx:key="index" wx:for-index="idx"
+					data-index="{{ idx }}" bind:tap="onTabTap">
 					<text>{{ item.name }}</text>
 				</view>
 			</view>
 		</view>
 
-		<view class="album-item-container" style="height: {{ album[index].rows * 250 }}rpx; grid-template-rows: repeat({{ album[index].rows }}, 1fr);">
+		<view class="album-item-container"
+			style="height: {{ album[index].rows * 250 }}rpx; grid-template-rows: repeat({{ album[index].rows }}, 1fr);">
 			<view class="album-item" wx:for="{{ album[index].values }}" wx:key="index">
 				<image class="item-pic" src="{{ item.src }}" mode="aspectFill" />
 			</view>

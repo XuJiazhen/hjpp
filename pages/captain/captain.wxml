@@ -1,7 +1,7 @@
 <view class="total">
 	<text class="text">共 {{ members.length }} 人</text>
 </view>
-<view class="member-item" wx:for="{{ members }}" wx:key="index">
+<view class="member-item" wx:for="{{ members }}" wx:key="index" wx:if="{{ members && members.length !== 0 }}">
 	<view class="info">
 		<view class="info-item avatar">
 			<image class="pic" src="{{ item.avatar}}"></image>

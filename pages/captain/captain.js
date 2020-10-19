@@ -38,7 +38,7 @@ Page({
 				console.log('GET ALL MEMBERS: ', res);
 
 				_this.setData({
-					members: _this.data.members.concat(res.data.data)
+					members: res.data.data
 				})
 			},
 			fail(err) {
