@@ -50,7 +50,7 @@ var filter = {
 
 	formatMoney: function(money) {
 		return money ? money.split('.')[0].toString() + '元' : ''
-	}
+	},
 }
 
 module.exports = {

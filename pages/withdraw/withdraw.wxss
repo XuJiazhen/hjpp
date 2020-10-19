@@ -22,4 +22,10 @@
 	font-weight: normal;
 	background-color: #568690;
 	color: #ffffff;
+	max-width: 25%;
+}
+
+.money {
+	color: #ff5b5c;
+	font-weight: bold;
 }
