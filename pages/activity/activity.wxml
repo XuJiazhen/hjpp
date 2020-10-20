@@ -124,23 +124,25 @@
 	<text class="icon iconfont icon-QRcode"></text>
 </view>
 
-<view class="member-card" wx:if="{{ showMemberCard }}">
-	<view class="card-main">
-		<view class="main-header">
-			<text class="icon iconfont icon-close" bind:tap="closeMemberCard"></text>
-		</view>
-
-		<view class="main-avatar-wrapper">
-			<view class="main-avatar">
-				<image class="pic" src="{{ member.avatar }}" mode="aspectFit"></image>
+<view class="member-card-mask" wx:if="{{ showMemberCard }}" catchtouchmove="prevent" bindtap="onMemberCardMaskTap">
+	<view class="member-card" catch:tap="prevent">
+		<view class="card-main">
+			<view class="main-header">
+				<text class="icon iconfont icon-close" catch:tap="closeMemberCard"></text>
 			</view>
-		</view>
 
-		<view class="main-row name">
-			<text class="icon iconfont icon-account"></text><text class="row-content">{{ member.name }}</text>
-		</view>
-		<view class="main-row phone" bind:tap="makePhoneCall" data-phone="{{ member.phone }}">
-			<text class="icon iconfont icon-phone"></text><text class="row-content">{{ member.phone }}</text>
+			<view class="main-avatar-wrapper">
+				<view class="main-avatar">
+					<image class="pic" src="{{ member.avatar }}" mode="aspectFit"></image>
+				</view>
+			</view>
+
+			<view class="main-row name">
+				<text class="icon iconfont icon-account"></text><text class="row-content">{{ member.name }}</text>
+			</view>
+			<view class="main-row phone" bind:tap="makePhoneCall" data-phone="{{ member.phone }}">
+				<text class="icon iconfont icon-phone"></text><text class="row-content">{{ member.phone }}</text>
+			</view>
 		</view>
 	</view>
 </view>

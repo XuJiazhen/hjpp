@@ -1,5 +1,4 @@
 <view wx:if="{{ isRegistered }}" class="container">
-
 	<block wx:if="{{ created.length !== 0 || attended.length !== 0 }}">
 		<block wx:if="{{ created.length !== 0 }}">
 			<view class="section {{ attended.length !== 0 ? 'created' : '' }}">

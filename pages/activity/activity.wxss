@@ -318,6 +318,15 @@
 	color: #808080;
 }
 
+.member-card-mask {
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	background-color: transparent;
+}
+
 .member-card {
 	background-color: #ffffff;
 	border-radius: 6px;

@@ -516,5 +516,15 @@ Page({
 		wx.makePhoneCall({
 			phoneNumber: e.currentTarget.dataset.phone,
 		})
+	},
+
+	onMemberCardMaskTap(e) {
+		this.setData({
+			showMemberCard: false
+		})
+	},
+
+	prevent(e) {
+		return false
 	}
 })

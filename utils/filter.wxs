@@ -48,9 +48,28 @@ var filter = {
 		return rules
 	},
 
-	formatMoney: function(money) {
+	formatMoney: function (money) {
 		return money ? money.split('.')[0].toString() + '元' : ''
 	},
+
+	getStatus: function (str) {
+		switch (str) {
+			case 'wait':
+				return '等待中'
+				break;
+			case 'refused':
+				return '已拒绝'
+				break;
+			case 'paid':
+				return '已支付'
+				break;
+			case 'failed':
+				return '支付失败'
+				break;
+			default:
+				return '获取失败'
+		}
+	}
 }
 
 module.exports = {
@@ -59,5 +78,6 @@ module.exports = {
 	getIdentity: filter.getIdentity,
 	multiSelect: filter.multiSelect,
 	generateRulesTable: filter.generateRulesTable,
-	formatMoney: filter.formatMoney
+	formatMoney: filter.formatMoney,
+	getStatus: filter.getStatus
 }

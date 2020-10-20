@@ -1,1 +1,15 @@
-<text>收益总额</text>
+<wxs module="filter" src="../../utils/filter.wxs"></wxs>
+
+<view class="bill-status">
+	<view class="status-item {{ idx === index ? 'active' : '' }}" wx:for="{{ billStatus }}" wx:key="index"
+		bind:tap="onStatusTap" data-idx="{{ index }}">
+		<text>{{ item }}</text>
+	</view>
+</view>
+
+<view class="bill-item" wx:for="{{ billList }}" wx:key="index">
+	<text class="project">{{ item.search_project_name }}</text>
+	<text class="member">{{ item.search_member_name }}</text>
+	<text class="money">￥{{ filter.formatMoney(item.prize) }}</text>
+	<text class="status {{ item.status }}">{{ filter.getStatus(item.status) }}</text>
+</view>

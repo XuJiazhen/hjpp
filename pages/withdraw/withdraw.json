@@ -1,3 +1,11 @@
 {
-  "usingComponents": {}
+  "usingComponents": {},
+  "navigationStyle": "default",
+  "backgroundTextStyle": "light",
+  "navigationBarBackgroundColor": "#568690",
+  "navigationBarTitleText": "提现列表",
+  "navigationBarTextStyle": "white",
+  "enablePullDownRefresh": false,
+  "backgroundColorTop": "#ffffff",
+  "backgroundColorBottom": "#ffffff"
 }

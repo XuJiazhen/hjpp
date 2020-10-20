@@ -1,8 +1,16 @@
 <wxs module="filter" src="../../utils/filter.wxs"></wxs>
 
-<view wx:if="{{ clinchedList && clinchedList.length !== 0 }}" class="clinched-item" wx:for="{{ clinchedList }}" wx:key="index">
-	<text class="project">{{ item.search_project_name }}</text>
-	<text class="member">{{ item.search_member_name }}</text>
-	<text class="money">￥{{ filter.formatMoney(item.cal_captain_money) }}</text>
-	<button class="withdraw">提现</button>
-</view>
+<block wx:if="{{ clinchedList && clinchedList.length !== 0 }}">
+	<view class="clinched-item" wx:for="{{ clinchedList }}" wx:key="index">
+		<text class="project">{{ item.search_project_name }}</text>
+		<text class="member">{{ item.search_member_name }}</text>
+		<text class="money">￥{{ filter.formatMoney(item.cal_captain_money) }}</text>
+		<button class="withdraw" bind:tap="onWithdraw" data-id="{{ item.id }}">提现</button>
+	</view>
+</block>
+
+<block wx:else>
+	<view class="notice">
+		<text>暂无成交客户</text>
+	</view>
+</block>
