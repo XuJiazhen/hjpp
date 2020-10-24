@@ -1,0 +1,15 @@
+page {
+  background-color: #f8f8f8;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.picture {
+}
+
+.pic {
+  width: 100%;
+  height: 100%;
+}

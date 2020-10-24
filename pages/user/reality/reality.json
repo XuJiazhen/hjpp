@@ -1,11 +1,9 @@
 {
-  "usingComponents": {
-    "project-item": "/components/project-item/index"
-  },
+  "usingComponents": {},
   "navigationStyle": "default",
   "backgroundTextStyle": "light",
   "navigationBarBackgroundColor": "#568690",
-  "navigationBarTitleText": "团长",
+  "navigationBarTitleText": "实景图",
   "navigationBarTextStyle": "white",
   "enablePullDownRefresh": false,
   "backgroundColorTop": "#ffffff",

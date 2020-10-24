@@ -1,0 +1,3 @@
+<view class="picture" wx:for="{{ data.album }}" wx:key="index">
+  <image src="{{ item.src }}" mode="aspectFill"></image>
+</view>

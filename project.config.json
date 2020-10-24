@@ -142,6 +142,13 @@
         {
           "name": "pages/withdraw/withdraw",
           "pathName": "pages/withdraw/withdraw",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/user/user",
+          "pathName": "pages/user/user",
+          "query": "",
           "scene": null
         }
       ]

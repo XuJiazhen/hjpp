@@ -1,62 +1,67 @@
 {
-	"pages": [
-		"pages/index/index",
-		"pages/my/my",
-		"pages/register/register",
-		"pages/search/search",
-		"pages/detail/detail",
-		"pages/now/now",
-		"pages/activity/activity",
-		"pages/user/user",
-		"pages/captain/captain",
-		"pages/member/member",
-		"pages/captain/list/list",
-		"pages/feedback/feedback",
-		"pages/company/company",
-		"pages/instruction/instruction",
-		"pages/article/content/content",
-		"pages/article/list/list",
-		"pages/poster/poster",
-		"pages/withdraw/withdraw",
-		"pages/income/income"
-	],
-	"window": {
-		"navigationStyle": "default",
-		"backgroundTextStyle": "light",
-		"navigationBarBackgroundColor": "#fff",
-		"navigationBarTitleText": "",
-		"navigationBarTextStyle": "black"
-	},
-	"style": "v2",
-	"sitemapLocation": "sitemap.json",
-	"useExtendedLib": {
-		"weui": true
-	},
-	"tabBar": {
-		"color": "#000000",
-		"selectedColor": "#568690",
-		"borderStyle": "black",
-		"backgroundColor": "#ffffff",
-		"position": "bottom",
-		"list": [
-			{
-				"pagePath": "pages/index/index",
-				"text": "首页",
-				"iconPath": "/assets/icons/bx-home.png",
-				"selectedIconPath": "/assets/icons/bxs-home.png"
-			},
-			{
-				"pagePath": "pages/now/now",
-				"text": "正在拼",
-				"iconPath": "/assets/icons/bx-add-to-queue.png",
-				"selectedIconPath": "/assets/icons/bxs-add-to-queue.png"
-			},
-			{
-				"pagePath": "pages/my/my",
-				"text": "我的",
-				"iconPath": "/assets/icons/bx-user.png",
-				"selectedIconPath": "/assets/icons/bxs-user.png"
-			}
-		]
-	}
+  "pages": [
+    "pages/index/index",
+    "pages/my/my",
+    "pages/register/register",
+    "pages/search/search",
+    "pages/detail/detail",
+    "pages/now/now",
+    "pages/activity/activity",
+    "pages/user/user",
+    "pages/captain/captain",
+    "pages/member/member",
+    "pages/captain/list/list",
+    "pages/feedback/feedback",
+    "pages/company/company",
+    "pages/instruction/instruction",
+    "pages/article/content/content",
+    "pages/article/list/list",
+    "pages/poster/poster",
+    "pages/withdraw/withdraw",
+    "pages/income/income",
+    "pages/user/effect/effect",
+    "pages/user/reality/reality",
+    "pages/user/sample/sample",
+    "pages/user/structure/structure",
+    "pages/user/video/video"
+  ],
+  "window": {
+    "navigationStyle": "default",
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "",
+    "navigationBarTextStyle": "black"
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json",
+  "useExtendedLib": {
+    "weui": true
+  },
+  "tabBar": {
+    "color": "#000000",
+    "selectedColor": "#568690",
+    "borderStyle": "black",
+    "backgroundColor": "#ffffff",
+    "position": "bottom",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "/assets/icons/bx-home.png",
+        "selectedIconPath": "/assets/icons/bxs-home.png"
+      },
+      {
+        "pagePath": "pages/now/now",
+        "text": "正在拼",
+        "iconPath": "/assets/icons/bx-add-to-queue.png",
+        "selectedIconPath": "/assets/icons/bxs-add-to-queue.png"
+      },
+      {
+        "pagePath": "pages/my/my",
+        "text": "我的",
+        "iconPath": "/assets/icons/bx-user.png",
+        "selectedIconPath": "/assets/icons/bxs-user.png"
+      }
+    ]
+  }
 }
