@@ -494,6 +494,7 @@ Page({
 	},
 
 	showMemberCard(e) {
+		if (!this.data.isThisCaptain) return
 		const { avatar, name, phone } = e.currentTarget.dataset
 
 		this.setData({

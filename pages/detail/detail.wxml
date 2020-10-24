@@ -78,3 +78,10 @@
 		<button class="pin-start" open-type="getUserInfo" bind:getuserinfo="onGetUserInfo">发起拼团</button>
 	</block>
 </view>
+
+<view class="service-mask" wx:if="{{ showQrcode }}" catchtouchmove="prevent" bind:tap="hideQrcode">
+	<view class="service-qrcode" catch:tap="prevent">
+		<image class="pic" mode="aspectFit" src="../../assets/images/service.jpg"></image>
+		<view class="remarks">请添加并通知客服人员以完成团长申请审核</view>
+	</view>
+</view>

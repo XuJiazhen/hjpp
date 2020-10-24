@@ -124,7 +124,7 @@
 	<text class="icon iconfont icon-QRcode"></text>
 </view>
 
-<view class="member-card-mask" wx:if="{{ showMemberCard }}" catchtouchmove="prevent" bindtap="onMemberCardMaskTap">
+<view class="member-card-mask" wx:if="{{ showMemberCard }}" catchtouchmove="prevent" bind:tap="onMemberCardMaskTap">
 	<view class="member-card" catch:tap="prevent">
 		<view class="card-main">
 			<view class="main-header">
