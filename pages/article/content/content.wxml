@@ -1,5 +1,5 @@
 <web-view src="{{ url }}">
-	<cover-view class="fixed-bottom" wx:if="{{ shared }}">
+	<cover-view class="fixed-bottom">
 		<cover-view class="left">
 			<cover-view class="avatar" bind:tap="toActivityListPage">
 				<cover-image class="pic" src="{{ realUserInfo.avatar }}"></cover-image>
@@ -11,7 +11,7 @@
 		</cover-view>
 		<cover-view class="right">
 			<cover-view class="cus-btn chat">聊天</cover-view>
-			<cover-view class="cus-btn call">电话</cover-view>
+			<cover-view class="cus-btn call" bind:type="onMakePhoneCall">电话</cover-view>
 		</cover-view>
 	</cover-view>
 </web-view>

@@ -64,8 +64,11 @@
 				</view>
 
 				<view class="remarks">
-					<text>参与人数越多，补贴首付越高，</text><button plain class="text-share" size="mini" open-type="share">立即分享<text
-							class="icon iconfont icon-Share"></text></button>
+					<view class="line">
+						<text>参与人数越多，补贴首付越高，</text><button plain class="text-share" size="mini" open-type="share">立即分享<text
+								class="icon iconfont icon-Share"></text></button>
+					</view>
+					<text>首付-拼团补贴=购房人实际支付首付</text>
 				</view>
 
 			</view>

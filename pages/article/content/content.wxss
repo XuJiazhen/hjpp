@@ -1,3 +1,5 @@
+@import '/assets/styles/iconfont.wxss';
+
 .fixed-bottom {
   position: fixed;
   bottom: 0;
@@ -72,4 +74,18 @@
 
 .call {
   background-color: #568690;
+}
+
+.icon {
+  width: 80rpx;
+  height: 80rpx;
+  background-color: #568690;
+  color: #ffffff;
+  position: fixed;
+  right: 20rpx;
+  bottom: 30%;
+  text-align: center;
+  line-height: 80rpx;
+  border-radius: 50%;
+  font-size: 18px;
 }

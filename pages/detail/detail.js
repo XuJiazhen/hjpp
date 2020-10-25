@@ -11,8 +11,6 @@ Page({
 	},
 
 	onLoad: function (options) {
-		console.log(options);
-
 		const _this = this
 
 		wx.request({

@@ -20,6 +20,7 @@ Page({
     if (!options.id) {
       const eventChannel = this.getOpenerEventChannel()
       eventChannel.on('acceptDataFromOpenerPage', function (data) {
+
         _this.setData({
           url: data.url,
           title: data.title,
@@ -29,7 +30,7 @@ Page({
     } else {
       try {
         const userInfo = await _this.getUserInfo(options.id)
-        
+
         _this.setData({
           shared: true,
           realUserInfo: userInfo.data,
@@ -78,6 +79,12 @@ Page({
   toActivityListPage(e) {
     wx.navigateTo({
       url: `/pages/captain/list/list?id=${this.data.id}&from=article`,
+    })
+  },
+
+  onMakePhoneCall(e) {
+    wx.makePhoneCall({
+      phoneNumber: this.data.realUserInfo.cellphone
     })
   }
 })

@@ -150,6 +150,11 @@
           "pathName": "pages/user/user",
           "query": "",
           "scene": null
+        },
+        {
+          "name": "pages/article/content/content",
+          "pathName": "pages/article/content/content",
+          "scene": null
         }
       ]
     }
