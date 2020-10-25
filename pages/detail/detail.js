@@ -6,7 +6,8 @@ Page({
 		detail: [],
 		album: [],
 		index: 0,
-		info: {}
+		info: {},
+		showQrcode: false
 	},
 
 	onLoad: function (options) {
@@ -76,7 +77,7 @@ Page({
 						item.values.pop()
 					}
 				})
-				
+
 
 				_this.setData({
 					info,
@@ -305,7 +306,7 @@ Page({
 			success(res) {
 				if (res.confirm) {
 					wx.showLoading({
-						title: '正在发起',
+						title: '正在发起申请',
 						success(res) {
 							wx.request({
 								url: `${app.globalData.baseUrl}/applyForCaptain`,
@@ -320,10 +321,12 @@ Page({
 									wx.hideLoading({
 										success() {
 											wx.showToast({
-												title: '申请成功',
+												title: '已发起申请',
 												icon: 'success',
 												success() {
-													_this.toInitiateOrder()
+													_this.setData({
+														showQrcode: true
+													})
 												}
 											})
 										},
@@ -345,8 +348,10 @@ Page({
 
 	toInitiateOrder(e) {
 		const _this = this
+		const money = _this.data.info.activity_info.captain_prize.split('.')[0].toString() + '元'
 		wx.showModal({
 			title: '是否发起拼团？',
+			content: `成为团长，每拼团成交一个客户，可得${money}奖金`,
 			cancelText: '否',
 			cancelColor: '#935557',
 			confirmText: '是',
@@ -399,6 +404,27 @@ Page({
 			longitude: Number(this.data.info.longitude),
 			address: this.data.info.address,
 			name: this.data.info.project_name
+		})
+	},
+
+	prevent(e) {
+		return false
+	},
+
+	hideQrcode(e) {
+		this.setData({
+			showQrcode: false
+		})
+	},
+
+	onPreviewImage(e) {
+		const album = this.data.album[this.data.index].values.map(item=>{
+			return item.src
+		})
+		
+		wx.previewImage({
+			urls: album,
+			showMenu: true
 		})
 	}
 })

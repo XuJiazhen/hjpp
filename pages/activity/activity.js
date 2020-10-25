@@ -21,13 +21,11 @@ Page({
 
 	onLoad: function (options) {
 		console.log('OPTIONS: ', options);
-		console.log(options, wx.getStorageSync('realUserInfo'));
 
 		wx.showLoading({
 			title: '正在载入',
 			mask: true
 		})
-
 
 		if (options.id) {
 			this.setData({
@@ -274,13 +272,9 @@ Page({
 							text: project.developer
 						},
 						{
-							label: '关键字',
-							text: project.keywords
+							label: '面积段',
+							text: project.on_sale_building
 						},
-						// {
-						// 	label: '停车位',
-						// 	text: project.parking_number
-						// },
 						{
 							label: '物业费',
 							text: project.property_manage_fee + ' 平/月'
@@ -289,22 +283,10 @@ Page({
 							label: '产权期',
 							text: project.term + ' 年'
 						},
-						// {
-						// 	label: '住宅面积',
-						// 	text: project.building_area
-						// },
-						// {
-						// 	label: '绿化面积',
-						// 	text: project.green_rate + ' %'
-						// },
 						{
 							label: '物业公司',
 							text: project.property_manage
 						},
-						// {
-						// 	label: '成交方式',
-						// 	text: project.payment
-						// }
 					]
 
 					console.log('IS THIS CAPTAIN: ', isThisCaptain);
@@ -393,13 +375,9 @@ Page({
 											text: project.developer
 										},
 										{
-											label: '关键字',
-											text: project.keywords
+											label: '面积段',
+											text: project.on_sale_building
 										},
-										// {
-										// 	label: '停车位',
-										// 	text: project.parking_number
-										// },
 										{
 											label: '物业费',
 											text: project.property_manage_fee + ' 平/月'
@@ -408,22 +386,14 @@ Page({
 											label: '产权期',
 											text: project.term + ' 年'
 										},
-										// {
-										// 	label: '住宅面积',
-										// 	text: project.building_area
-										// },
-										// {
-										// 	label: '绿化面积',
-										// 	text: project.green_rate + ' %'
-										// },
+										{
+											label: '面积段',
+											text: project.on_sale_building
+										},
 										{
 											label: '物业公司',
 											text: project.property_manage
 										},
-										// {
-										// 	label: '成交方式',
-										// 	text: project.payment
-										// }
 									]
 
 									console.log('IS THIS CAPTAIN: ', isThisCaptain);
@@ -498,11 +468,8 @@ Page({
 	},
 
 	showMemberCard(e) {
-		const {
-			avatar,
-			name,
-			phone
-		} = e.currentTarget.dataset
+		if (!this.data.isThisCaptain) return
+		const { avatar, name, phone } = e.currentTarget.dataset
 
 		this.setData({
 			showMemberCard: true,

@@ -42,7 +42,7 @@ Page({
     this.setData({
       navBarInfo: app.globalData.navBarInfo,
     });
-
+    
     const _this = this
 
     wx.request({

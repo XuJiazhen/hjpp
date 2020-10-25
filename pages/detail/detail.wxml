@@ -63,7 +63,7 @@
 		<view class="album-item-container"
 			style="height: {{ album[index].rows * 250 }}rpx; grid-template-rows: repeat({{ album[index].rows }}, 1fr);">
 			<view class="album-item" wx:for="{{ album[index].values }}" wx:key="index">
-				<image class="item-pic" src="{{ item.src }}" mode="aspectFill" />
+				<image class="item-pic" src="{{ item.src }}" mode="aspectFill" bind:tap="onPreviewImage" />
 			</view>
 		</view>
 	</view>
@@ -77,4 +77,11 @@
 	<block wx:else>
 		<button class="pin-start" open-type="getUserInfo" bind:getuserinfo="onGetUserInfo">发起拼团</button>
 	</block>
+</view>
+
+<view class="service-mask" wx:if="{{ showQrcode }}" catchtouchmove="prevent" bind:tap="hideQrcode">
+	<view class="service-qrcode" catch:tap="prevent">
+		<image class="pic" mode="aspectFit" src="../../assets/images/service.jpg"></image>
+		<view class="remarks">请添加并通知客服人员以完成团长申请审核</view>
+	</view>
 </view>
