@@ -86,5 +86,5 @@ Page({
     wx.makePhoneCall({
       phoneNumber: this.data.realUserInfo.cellphone
     })
-  }
+  },
 })
