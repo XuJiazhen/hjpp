@@ -81,7 +81,7 @@
 
 <view class="service-mask" wx:if="{{ showQrcode }}" catchtouchmove="prevent" bind:tap="hideQrcode">
 	<view class="service-qrcode" catch:tap="prevent">
-		<image class="pic" mode="aspectFit" src="../../assets/images/service.jpg"></image>
-		<view class="remarks">请添加并通知客服人员以完成团长申请审核</view>
+		<image class="pic" mode="aspectFit" src="../../assets/images/service.jpg" show-menu-by-longpress></image>
+		<view class="remarks">请长按二维码保存并添加客服人员，完成团长申请审核</view>
 	</view>
 </view>
