@@ -13,6 +13,8 @@ App({
 
       wx.login({
         success: (res) => {
+          console.log(res.code);
+          
           wx.request({
             url: 'https://api.huijianfc.cn/cd/wx/mp/login',
             data: {
